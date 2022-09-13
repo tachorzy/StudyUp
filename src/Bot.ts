@@ -1,42 +1,32 @@
 import { Client, GatewayIntentBits } from "discord.js";
-import express from "express";
-import { connectToDatabase } from "./services/database.service"
-import { usersRouter } from "./routes/users.router";
+import mongoose from "mongoose"
 import command from "./Command";
 import * as dotenv from "dotenv";
 
 dotenv.config();
 
-export const token = process.env.DISCORD_TOKEN;
+const dbtoken: string | undefined = process.env.DB_CONN_STRING;
+export const token: string | undefined = process.env.DISCORD_TOKEN;
 export const clientId: any = process.env.clientId;
-export const guildId: any = process.env.guildId;
+export const guildId: any | undefined = process.env.guildId;
 export const { REST } = require('@discordjs/rest');
 
 console.log("Bot is starting...");
 console.log(`Discord token: ${token}`);
+console.log(`MongoDB token: ${dbtoken}`);
 
-export const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+export const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessageReactions, GatewayIntentBits.GuildMessages]});
 
-client.once('ready', () => {
+client.once('ready', async () => {
+	await mongoose.connect(
+		dbtoken || '',
+		{
+			keepAlive: true,
+		}
+	)
+
 	console.log('Ready!');
 });
 
 command(client);
 client.login(token);
-
-//MongoDB
-const app = express();
-const port = 3000; //probably should change later?
-connectToDatabase()
-    .then(() => {
-		console.log(`The port is ${port}`)
-        app.use("/games", usersRouter);
-
-        app.listen(port, () => {
-            console.log(`Server started at http://localhost:${port}`);
-        });
-    })
-    .catch((error: Error) => {
-        console.error("Database connection failed", error);
-        process.exit();
-    });

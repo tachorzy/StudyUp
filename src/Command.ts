@@ -1,7 +1,8 @@
 import { embedAuthorPredicate } from "@discordjs/builders/dist/messages/embed/Assertions";
-import { Client, EmbedBuilder, Routes, ChatInputCommandInteraction } from "discord.js";
+import { Client, EmbedBuilder, Routes, ChatInputCommandInteraction, InteractionResponse } from "discord.js";
+import { MongoServerClosedError } from "mongodb";
 import BodyReadable from "undici/types/readable";
-import { token, clientId, guildId, REST } from './Bot';
+import { token, clientId, REST } from './Bot';
 import { commands } from "./Commands";
 // import AddEvent from "./Commands/AddEvent";
 
@@ -12,22 +13,53 @@ export default (client: Client): void => {
         .then((data: any) => console.log(`Successfully registered ${data.length} application commands.`)) //using any for all your types is redundant cuz thats literally just js
         .catch(console.error);
     
+    var participantCollection;
+    //upon an interaction via slash command
     client.on('interactionCreate', async interaction => {
         if (!interaction.isChatInputCommand()) return;
     
         const { commandName } = interaction;
         var embed: EmbedBuilder;
-        
+        //var message: InteractionResponse<boolean>;
+        var message;
         switch(commandName){
             case 'addevent':
                 embed = AddEvent(interaction);
                 await interaction.reply({embeds: [embed]});
+                message = await interaction.fetchReply();
+                //setting the first reaction made by the bot
+                message.react('👍');
                 break;
             case 'help':
                 await interaction.reply({embeds: [help()]})
                 break;
+            case 'ping':
+                await ping(participantCollection, interaction, interaction.options.getString('announcement'));
+                break;
         }
     });
+    
+    client.on('messageReactionAdd', async reaction => {
+        if(await reaction.emoji.name === '👍'){
+            participantCollection = await reaction.users.fetch();
+            console.log(participantCollection);
+            console.log(participantCollection.keys());
+            //we would then update the db here 
+
+            //ping test
+        }
+    });
+
+    client.on('messageReactionRemove', async reaction => {
+        participantCollection = await reaction.users.fetch();
+        console.log(participantCollection);
+        console.log(participantCollection.keys());   
+        //we would then update the db here 
+        
+        //ping test
+    });
+
+
 }
 
 //AddEvent function creates embed for a new event from information received through a slash command
@@ -67,21 +99,37 @@ function AddEvent (interaction: ChatInputCommandInteraction) {
     return embed;
 }
 
+//pings all the people who are in a specific event
+async function ping(map, interaction, announcement ){
+    if(map === undefined){
+        return interaction.reply('`Error: No event found. Try using /addevent first`')
+    }
+    var userIds: string = ''; //we're gonna concatenate a string of the discordids
+    map.forEach((key) => {userIds += `${key} `})
+    if(announcement !== null)
+        interaction.reply(`${announcement}\n${userIds}`);
+    else
+        interaction.reply(userIds);
+}
+
+//creates a help embed
 function help(){
     const ownerid = '<@107022278838996992>'
+    const coownerid = '<@242075681046003743>'
 
     const helpembed = new EmbedBuilder()
         .setColor('#32a852')
         .setTitle('Meet Up With StudyUp')
-        .setDescription(`Brought to you by ${ownerid}`)
+        .setDescription(`Brought to you by ${ownerid} and ${coownerid} `)
         .setThumbnail('https://data.whicdn.com/images/323756483/original.gif')
         .addFields(
             {name: 'What is StudyUp?', value: 'StudyUp is a bot made for bringing you and your classmates together outside of the classroom. Form study groups, '
             + 'study sessions, watch parties and more with the commands below!'},
-            {name: ':loudspeaker: addevent', value: 'Announce an upcoming event'},
-            {name: ':no_entry_sign: delevent', value: 'Close an event invitation'},
-            {name: ':placard: updatevent', value: 'Use to announce an upcoming event'},
-            {name: ':hourglass: schedule', value: 'Schedule a recurring meeting for either a daily, weekly, biweekly or custom basis'},
+            {name: ':loudspeaker: /addevent', value: 'Announce an upcoming event.'},
+            {name: ':exclamation: /ping', value: 'Notify an event\'s participants.'},
+            {name: ':no_entry_sign: /delevent (coming soon)', value: 'Close an event invitation.'},
+            {name: ':placard: /updatevent (coming soon)', value: 'Use to announce an upcoming event.'},
+            {name: ':hourglass: /schedule (coming soon)', value: 'Schedule a recurring meeting for either a daily, weekly, biweekly or custom basis'},
         )
         .setFooter({text: 'developed in TypeScript', iconURL: 'https://pbs.twimg.com/profile_images/1290672565690695681/0G4bie6b_400x400.jpg'})
     return helpembed;
