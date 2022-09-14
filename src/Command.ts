@@ -1,10 +1,9 @@
-import { embedAuthorPredicate } from "@discordjs/builders/dist/messages/embed/Assertions";
-import { Client, EmbedBuilder, Routes, ChatInputCommandInteraction, InteractionResponse } from "discord.js";
-import { MongoServerClosedError } from "mongodb";
-import BodyReadable from "undici/types/readable";
+import { Client, EmbedBuilder, Routes, ChatInputCommandInteraction } from "discord.js";
+import { utimesSync } from "fs";
+import mongoose from "mongoose"
 import { token, clientId, REST } from './Bot';
+import { insertEmbed } from "./Database";
 import { commands } from "./Commands";
-// import AddEvent from "./Commands/AddEvent";
 
 export default (client: Client): void => {
     const rest = new REST({ version: '10' }).setToken(token);
@@ -12,7 +11,7 @@ export default (client: Client): void => {
     rest.put(Routes.applicationCommands(clientId), { body: commands })
         .then((data: any) => console.log(`Successfully registered ${data.length} application commands.`)) //using any for all your types is redundant cuz thats literally just js
         .catch(console.error);
-    
+        
     var participantCollection;
     //upon an interaction via slash command
     client.on('interactionCreate', async interaction => {
@@ -44,10 +43,7 @@ export default (client: Client): void => {
             participantCollection = await reaction.users.fetch();
             console.log(participantCollection);
             console.log(participantCollection.keys());
-            //we would then update the db here 
-
-            //ping test
-        }
+            }
     });
 
     client.on('messageReactionRemove', async reaction => {
@@ -69,11 +65,11 @@ function AddEvent (interaction: ChatInputCommandInteraction) {
     const room = interaction.options.getString('room');
     const capacity = interaction.options.getString('capacity');
     const time = interaction.options.getString('time');
-    const date = interaction.options.getString('date');
+    const date: any = interaction.options.getString('date');
     const details = interaction.options.getString('description');
     const host: string = interaction.user.id;
     
-    //room emote image will change depending on the building you choose
+    //room emote image will change depending on the building you choose. By defualt it's set to a library emote
     var roomEmote = '<:StudyRoom2:1017865348457975838>'
     if(room?.includes('PGH') || room?.includes('pgh'))
         roomEmote = '<:pgh:1017868374040129588>'
@@ -96,11 +92,13 @@ function AddEvent (interaction: ChatInputCommandInteraction) {
     //only add the capacity to the embed when there's an input for it.
     if(capacity !== null)
             embed.addFields({ name: "ROOM CAPACITY:", value: `**${capacity}** participants`, inline: true })
+    //creating a document for the embed in the database
+    insertEmbed(title, date);    
     return embed;
 }
 
 //pings all the people who are in a specific event
-async function ping(map, interaction, announcement ){
+async function ping(map, interaction, announcement){
     if(map === undefined){
         return interaction.reply('`Error: No event found. Try using /addevent first`')
     }

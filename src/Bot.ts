@@ -24,7 +24,6 @@ client.once('ready', async () => {
 			keepAlive: true,
 		}
 	)
-
 	console.log('Ready!');
 });
 
