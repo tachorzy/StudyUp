@@ -2,7 +2,7 @@ import { Client, EmbedBuilder, Routes, ChatInputCommandInteraction } from "disco
 import { utimesSync } from "fs";
 import mongoose from "mongoose"
 import { token, clientId, REST } from './Bot';
-import { insertEmbed } from "./Database";
+import { insertEvent } from "./Database";
 import { commands } from "./Commands";
 
 export default (client: Client): void => {
@@ -60,6 +60,7 @@ export default (client: Client): void => {
 
 //AddEvent function creates embed for a new event from information received through a slash command
 function AddEvent (interaction: ChatInputCommandInteraction) {
+    const eventId = interaction.id;
     const eventType = interaction.options.getString('type');
     const title = interaction.options.getString('title');
     const room = interaction.options.getString('room');
@@ -87,13 +88,13 @@ function AddEvent (interaction: ChatInputCommandInteraction) {
             { name: "HOST:", value: `<@${host}>`, inline: true },
         )
         .setThumbnail('https://i.imgur.com/XX8tyb3.png')
-        .setFooter({text : '🚿 please for the love of the CS department, shower :)'})
+        .setFooter({text: `🚿 please for the love of the CS department, shower :)\n\nEventId: ${eventId}`})
     
     //only add the capacity to the embed when there's an input for it.
     if(capacity !== null)
             embed.addFields({ name: "ROOM CAPACITY:", value: `**${capacity}** participants`, inline: true })
     //creating a document for the embed in the database
-    insertEmbed(title, date);    
+    insertEvent(eventId, title, date);    
     return embed;
 }
 
