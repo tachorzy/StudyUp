@@ -2,7 +2,7 @@ import { Client, EmbedBuilder, Routes, ChatInputCommandInteraction } from "disco
 import { utimesSync } from "fs";
 import mongoose from "mongoose"
 import { token, clientId, REST } from './Bot';
-import { insertEvent } from "./Database";
+import { insertEvent, findEvent, enrollUser, dropUser } from "./Database";
 import { commands } from "./Commands";
 
 export default (client: Client): void => {
@@ -32,20 +32,29 @@ export default (client: Client): void => {
             case 'help':
                 await interaction.reply({embeds: [help()]})
                 break;
+            case 'search':
+                const doc = await search(interaction.options.getString('id'))
+                await interaction.reply(`test ${doc}`)
+                break;
             case 'ping':
                 await ping(participantCollection, interaction, interaction.options.getString('announcement'));
                 break;
         }
     });
-    
+
+    //reaction added
     client.on('messageReactionAdd', async reaction => {
+        const embed = reaction.message.embeds.at(0);
         if(await reaction.emoji.name === '👍'){
             participantCollection = await reaction.users.fetch();
             console.log(participantCollection);
             console.log(participantCollection.keys());
-            }
+
+                // enrollUser(participantCollection.at(-1), )
+        }
     });
 
+    //reaction removed
     client.on('messageReactionRemove', async reaction => {
         participantCollection = await reaction.users.fetch();
         console.log(participantCollection);
@@ -110,6 +119,11 @@ async function ping(map, interaction, announcement){
     else
         interaction.reply(userIds);
 }
+
+async function search(interactionId: string | null){
+    findEvent(interactionId);
+}
+
 
 //creates a help embed
 function help(){

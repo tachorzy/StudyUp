@@ -30,13 +30,17 @@ export const commands = [
             option.setName('capacity')
             .setDescription('What\'s the room\'s suggested number of people?')
             .setRequired(false)),
-        
+    new SlashCommandBuilder().setName('search').setDescription('search for an event')
+        .addStringOption(option =>
+            option.setName('id')
+            .setDescription('The id of the event is found in the footer of event embeds')
+            .setRequired(true)),
     new SlashCommandBuilder().setName('help').setDescription('provides help on all available commands'),
     new SlashCommandBuilder().setName('ping').setDescription('Ping everyone in an event and send a message.')
         .addStringOption(option =>
             option.setName('announcement')
             .setDescription('Have something to share with us?')
-            .setRequired(false)),
+            .setRequired(false))
     // new SlashCommandBuilder().setName('delevent').setDescription('Removes an embed and study sesh'),
 	// new SlashCommandBuilder().setName('update').setDescription('Updates a study sesh embed with new info'),
 ]	

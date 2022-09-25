@@ -24,12 +24,46 @@ export function insertUser(discordId: string | null, name: string | null, events
     doc.save();
 }
 
-//pushes and event into a user's array of events
-export function addEvent(discordId: string, eventId: string, eventTitle: string){
-    //NEEDS WORK   
+//adds a user into an event's participant list
+export function enrollUser(discordId: string, eventId: string){
+    eventModel.findOneAndUpdate({id: eventId},
+        {$push: { people: discordId } }, function(error, event){
+        if(error)
+           return console.log(error);        
+    })
 }
 
-//finds an event from the database
-export function findEvent(eventId: string | null){
-    //NEEDS WORK
+//removes a user from an event's participant list
+export function dropUser(discordId: string, eventId: string){
+    eventModel.findOneAndUpdate({id: eventId},
+        {$pull: { people: discordId } }, function(error, event){
+        if(error)
+           return console.log(error);        
+    })
+}
+
+
+//pushes and event into a user's array of events
+export function addUser(discordId: string, eventId: string){
+
+}
+
+
+//finds an event from the database and returns the title and list of participants.
+export async function findEvent(eventId: string | null){
+    console.log(`SEARCHING FOR EVENTID: ${eventId}`)
+    //NEEDS WORK -- broken and needs refactoring
+    var title, users, str
+    eventModel.find({id: eventId}, function(error, event){
+        if(error)
+           return console.log(error);
+        console.log(event)
+        //string parsing: NEEDS REFACTORING!
+        str = event.toString()
+        users = str.slice(str.indexOf('['), str.indexOf(',')).split('],')
+        title = str.slice(str.indexOf('eventTitle: '), str.indexOf('}'))
+        console.log(`event title: ${title}\npeople: ${users}`);
+    }).select(['eventId', 'eventTitle', 'people'])
+    // console.log(eventModel.where('eventId').equals(eventId).select(['eventTItle', 'people']))
+    // return `event title: ${title}\npeople: ${users}`
 }
