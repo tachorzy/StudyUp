@@ -4,6 +4,7 @@ import mongoose from "mongoose"
 import { token, clientId, REST } from './Bot';
 import { insertEvent, findEvent, enrollUser, dropUser } from "./Database";
 import { commands } from "./Commands";
+import { stringify } from "querystring";
 
 export default (client: Client): void => {
     const rest = new REST({ version: '10' }).setToken(token);
@@ -102,24 +103,27 @@ function AddEvent (interaction: ChatInputCommandInteraction) {
     const eventId = interaction.id;
     const eventType = interaction.options.getString('type');
     const title = interaction.options.getString('title');
-    const room = interaction.options.getString('room');
-    const capacity = interaction.options.getString('capacity');
-    const time = interaction.options.getString('time');
-    const date: any = interaction.options.getString('date');
     const details = interaction.options.getString('description');
     const host: string = interaction.user.id;
+    const room = interaction.options.getString('room');
+    const capacity = interaction.options.getString('capacity');
+    const date: any = interaction.options.getString('starttime');
+    console.log(date)
+    console.log(ISOToEnglishDate(date))
+    console.log(ISOToEnglishTime(date))
 
+    const scheduledTime = new Date(date);
     if (title == null || room == null || details == null)
         return;
     
-    // interaction.guild?.scheduledEvents.create({
-    //     name: title,
-    //     description: details,
-    //     privacyLevel: 2,
-    //     entityType: 3, //https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-object-guild-scheduled-event-entity-types
-    //     scheduledStartTime: new Date('10/19'),
-    //     scheduledEndTime: new Date('11/10')
-    // });
+    interaction.guild?.scheduledEvents.create({
+        name: title,
+        description: details,
+        privacyLevel: 2,
+        entityType: 3, //https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-object-guild-scheduled-event-entity-types
+        scheduledStartTime: scheduledTime,
+        scheduledEndTime: new Date(date)
+    });
     
     //creating a document for the embed in the database
     insertEvent(interaction.guildId, eventId, title, null, date);    
@@ -133,7 +137,7 @@ function createEventEmbed(interaction: ChatInputCommandInteraction){
     const room = interaction.options.getString('room');
     const capacity = interaction.options.getString('capacity');
     const time = interaction.options.getString('time');
-    const date: any = interaction.options.getString('date');
+    const date: any = interaction.options.getString('date') + ' UTC';
     const details = interaction.options.getString('description');
     const host: string = interaction.user.id;
 
@@ -150,8 +154,8 @@ function createEventEmbed(interaction: ChatInputCommandInteraction){
         .setDescription(details)
         .addFields(
             { name: "ROOM:", value: `${roomEmote + " " + room}`, inline: true },
-            { name: "TIME:", value: `${time}`, inline: true },
-            { name: "DATE:", value: `${date}`, inline: true },
+            { name: "TIME:", value: `${ISOToEnglishTime(date)}`, inline: true },
+            { name: "DATE:", value: `${ISOToEnglishDate(date)}`, inline: true },
             { name: "HOST:", value: `<@${host}>`, inline: true },
         )
         .setThumbnail('https://i.imgur.com/XX8tyb3.png')
@@ -217,3 +221,40 @@ function help(){
         .setFooter({text: 'developed in TypeScript', iconURL: 'https://pbs.twimg.com/profile_images/1290672565690695681/0G4bie6b_400x400.jpg'})
     return helpembed;
 }
+
+
+//helper functions for converting between ISO and plain-English
+function ISOToEnglishDate(oldDate) {
+    var shownDate: string;
+    var tempDate = new Date(oldDate);
+    // var oldTime = Math.round(tempDate.getTime() / 1000);
+    var shownDate = '';
+    var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+                      
+    var year    = tempDate.getFullYear(); 
+    var month   = tempDate.getMonth();
+    var day     = tempDate.getDate(); 
+
+    shownDate = `${months[month]} ${day}, ${year}`
+                 
+    return shownDate;
+ }
+
+ function ISOToEnglishTime(oldTime) {
+    var shownTime: string;
+    var tempTime = new Date(oldTime);
+    // var oldTime = Math.round(tempDate.getTime() / 1000);
+    var hours: number   = tempTime.getHours()+6;
+    var mins: number | string   = tempTime.getMinutes();  
+    
+    if (mins < 10)
+        mins = `0${mins}`
+
+    if(hours > 12) {
+        shownTime = `${hours-12}:${mins} pm`
+    }
+    else
+        shownTime = `${hours}:${mins} am`
+    // shownTime = `${hours}:${mins}`
+    return shownTime;
+ }

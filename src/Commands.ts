@@ -16,12 +16,12 @@ import { Client, SlashCommandBuilder } from "discord.js";
                 .setDescription('Tell us where your sesh will be!')
                 .setRequired(true))
             .addStringOption(option =>
-                option.setName('time')
-                .setDescription('Tell us when you plan to meet!')
+                option.setName('starttime')
+                .setDescription('Tell us when you want to meet! In the format mm-dd-yyyy hh:mm, e.g. 09-12-2022 04:00')
                 .setRequired(true))
             .addStringOption(option =>
-                option.setName('date')
-                .setDescription('Tell us what day you wanna meet!')
+                option.setName('endtime')
+                .setDescription('When are you ending the session? In the format mm-dd-yyyy hh:mm, e.g. 09-12-2022 05:30')
                 .setRequired(true))
             .addStringOption(option =>
                 option.setName('description')
