@@ -1,17 +1,21 @@
 import mongoose, { Schema } from "mongoose"
 
-export const eventSchema = new Schema({ eventId: String, eventTitle: String, eventDate: Date, people: [], embedId: String});
+let listOfCollections = Object.keys(mongoose.connection.collections);
+
+export const eventSchema = new Schema({ guildId: String, eventId: String, eventTitle: String, eventDate: Date, people: [], url: String, embedId: String});
 export const eventModel = mongoose.model('events', eventSchema);
 
 export const userSchema = new Schema({ discordId: String, name: String, events: []});
 export const userModel = mongoose.model('userIDs', userSchema);
 
 //converting a string | null to a Date gives some trouble so I'll just use the any keyword here for now.
-export function insertEvent(eventId: string | null, title: string | null, date: any){
+export function insertEvent(guildId: string | null, eventId: string | null, title: string | null, url: string | null, date: any){
     const doc = new eventModel()
+    doc.guildId = guildId?.toString();
     doc.eventId = eventId?.toString();
     doc.eventTitle = title?.toString();
-    doc.eventDate = new Date(date)
+    doc.url = url?.toString();
+    doc.eventDate = new Date(date);
     doc.save();
 }
 
@@ -48,6 +52,9 @@ export function addUser(discordId: string, eventId: string){
 
 }
 
+export async function obtainEvents(){
+
+}
 
 //finds an event from the database and returns the title and list of participants.
 export async function findEvent(eventId: string | null){

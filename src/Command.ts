@@ -1,4 +1,4 @@
-import { Client, EmbedBuilder, Routes, ChatInputCommandInteraction } from "discord.js";
+import { Client, EmbedBuilder, Routes, ChatInputCommandInteraction, GuildScheduledEvent, Embed, EmbedAssertions } from "discord.js";
 import { utimesSync } from "fs";
 import mongoose from "mongoose"
 import { token, clientId, REST } from './Bot';
@@ -18,16 +18,26 @@ export default (client: Client): void => {
         if (!interaction.isChatInputCommand()) return;
     
         const { commandName } = interaction;
-        var embed: EmbedBuilder;
+        var embed: EmbedBuilder | undefined;
         //var message: InteractionResponse<boolean>;
         var message;
         switch(commandName){
             case 'addevent':
-                embed = AddEvent(interaction);
-                await interaction.reply({embeds: [embed]});
+                AddEvent(interaction);
+                // embed = createEventEmbed(interaction)
+                await interaction.reply({embeds: [createEventEmbed(interaction)]});
+
                 message = await interaction.fetchReply();
-                //setting the first reaction made by the bot
                 message.react('👍');
+                break;
+            case 'announce':
+                // embed = announceEvent(interaction);
+                break;
+            case 'events':
+                embed = await createEventsEmbed(interaction);
+                if(!embed)
+                    interaction.reply('There doesn\'t seem to be any scheduled events currently. Check again later!');
+                interaction.reply({embeds: [embed]})
                 break;
             case 'help':
                 await interaction.reply({embeds: [help()]})
@@ -36,13 +46,15 @@ export default (client: Client): void => {
                 const doc = await search(interaction.options.getString('id'))
                 await interaction.reply(`test ${doc}`)
                 break;
-            case 'ping':
-                await ping(participantCollection, interaction, interaction.options.getString('announcement'));
-                break;
         }
     });
 
-    //reaction added
+    //When an event is created we push it to hte 
+    client.on('guildScheduledEventCreate', async interaction => {
+        const embed = NewEvent(interaction);
+    });
+
+    //When a reaction added
     client.on('messageReactionAdd', async reaction => {
         const embed = reaction.message.embeds.at(0);
         if(await reaction.emoji.name === '👍'){
@@ -54,7 +66,7 @@ export default (client: Client): void => {
         }
     });
 
-    //reaction removed
+    //When reaction removed
     client.on('messageReactionRemove', async reaction => {
         participantCollection = await reaction.users.fetch();
         console.log(participantCollection);
@@ -65,6 +77,24 @@ export default (client: Client): void => {
     });
 
 
+}
+
+//announces a new event upon created
+function NewEvent(event: GuildScheduledEvent){
+    //creating a document for the embed in the database
+    insertEvent(event.guildId, event.id, event.name, event.url, event.scheduledStartAt);    
+    // const embed = new EmbedBuilder()
+    // .setColor('#32a852')
+    // .setThumbnail(event.image)
+    // .setTitle(`${event.name} has just been announced :notebook_with_decorative_cover:`)
+    // .setDescription(event.description)
+    // .addFields(
+    //     { name: "ROOM:", value: `${event.channel} `, inline: true },
+    //     { name: "Scheduled for:", value: `${event.scheduledStartAt} `, inline: true }
+    // )
+    // // .setThumbnail('https://i.imgur.com/XX8tyb3.png')
+    // .setFooter({text: `🚿 please for the love of the CS department, shower :)`})
+    // return embed;
 }
 
 //AddEvent function creates embed for a new event from information received through a slash command
@@ -78,7 +108,35 @@ function AddEvent (interaction: ChatInputCommandInteraction) {
     const date: any = interaction.options.getString('date');
     const details = interaction.options.getString('description');
     const host: string = interaction.user.id;
+
+    if (title == null || room == null || details == null)
+        return;
     
+    // interaction.guild?.scheduledEvents.create({
+    //     name: title,
+    //     description: details,
+    //     privacyLevel: 2,
+    //     entityType: 3, //https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-object-guild-scheduled-event-entity-types
+    //     scheduledStartTime: new Date('10/19'),
+    //     scheduledEndTime: new Date('11/10')
+    // });
+    
+    //creating a document for the embed in the database
+    insertEvent(interaction.guildId, eventId, title, null, date);    
+    return;
+}
+
+function createEventEmbed(interaction: ChatInputCommandInteraction){
+    const eventId = interaction.id;
+    const eventType = interaction.options.getString('type');
+    const title = interaction.options.getString('title');
+    const room = interaction.options.getString('room');
+    const capacity = interaction.options.getString('capacity');
+    const time = interaction.options.getString('time');
+    const date: any = interaction.options.getString('date');
+    const details = interaction.options.getString('description');
+    const host: string = interaction.user.id;
+
     //room emote image will change depending on the building you choose. By defualt it's set to a library emote
     var roomEmote = '<:StudyRoom2:1017865348457975838>'
     if(room?.includes('PGH') || room?.includes('pgh'))
@@ -102,28 +160,40 @@ function AddEvent (interaction: ChatInputCommandInteraction) {
     //only add the capacity to the embed when there's an input for it.
     if(capacity !== null)
             embed.addFields({ name: "ROOM CAPACITY:", value: `**${capacity}** participants`, inline: true })
-    //creating a document for the embed in the database
-    insertEvent(eventId, title, date);    
+    
     return embed;
 }
 
-//pings all the people who are in a specific event
-async function ping(map, interaction, announcement){
-    if(map === undefined){
-        return interaction.reply('`Error: No event found. Try using /addevent first`')
-    }
-    var userIds: string = ''; //we're gonna concatenate a string of the discordids
-    map.forEach((key) => {userIds += `${key} `})
-    if(announcement !== null)
-        interaction.reply(`${announcement}\n${userIds}`);
-    else
-        interaction.reply(userIds);
+async function createEventsEmbed(interaction: ChatInputCommandInteraction){
+    const embed = new EmbedBuilder();
+
+    let events: GuildScheduledEvent[] = [];
+    const eventsCollection = await interaction.guild?.scheduledEvents.fetch();
+    if(!eventsCollection)
+        return embed;
+    eventsCollection.forEach((e: GuildScheduledEvent) => {events.push(e)});
+    
+    embed
+        .setColor('#32a852')
+        .setTitle(`<a:NOTED:1032271325907128380> Study Groups for ${interaction.guild?.name} <a:NOTED:1032271325907128380>`)
+        .setDescription('Find a group for you!')
+        .setThumbnail('https://media.tenor.com/31Y1Gw8Zd98AAAAC/anime-write.gif');
+    
+    if(events.length == 0)
+        embed.addFields({ name: "There seems to not be any events currently.", value: 'Check again later!', inline: true })
+    
+    events.forEach((e: GuildScheduledEvent) => {
+        embed.addFields({
+            name: `${e.name}`, value: `${e.description}\n**Time:** ${e.scheduledStartAt}\n**Host:** ${e.creator}\n**Set a Reminder!**\n${e.url}`
+        })
+    })
+    
+    return embed;
 }
 
 async function search(interactionId: string | null){
     findEvent(interactionId);
 }
-
 
 //creates a help embed
 function help(){
