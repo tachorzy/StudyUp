@@ -17,11 +17,11 @@ import { Client, SlashCommandBuilder } from "discord.js";
                 .setRequired(true))
             .addStringOption(option =>
                 option.setName('starttime')
-                .setDescription('Tell us when you want to meet! In the format mm-dd-yyyy hh:mm, e.g. 09-12-2022 04:00')
+                .setDescription('Tell us when you want to meet! In the format mm-dd-yyyy hh:mm AM/PM, e.g. 09-12-2022 04:00 PM')
                 .setRequired(true))
             .addStringOption(option =>
                 option.setName('endtime')
-                .setDescription('When are you ending the session? In the format mm-dd-yyyy hh:mm, e.g. 09-12-2022 05:30')
+                .setDescription('When are you ending the session? In the format mm-dd-yyyy hh:mm AM/PM, e.g. 09-12-2022 05:30 PM')
                 .setRequired(true))
             .addStringOption(option =>
                 option.setName('description')

@@ -1,10 +1,11 @@
-import { Client, EmbedBuilder, Routes, ChatInputCommandInteraction, GuildScheduledEvent, Embed, EmbedAssertions } from "discord.js";
+import { Client, EmbedBuilder, Routes, ChatInputCommandInteraction, GuildScheduledEvent, Embed, EmbedAssertions, GuildScheduledEventEntityMetadataOptions } from "discord.js";
 import { utimesSync } from "fs";
 import mongoose from "mongoose"
 import { token, clientId, REST } from './Bot';
 import { insertEvent, findEvent, enrollUser, dropUser } from "./Database";
 import { commands } from "./Commands";
 import { stringify } from "querystring";
+import { start } from "repl";
 
 export default (client: Client): void => {
     const rest = new REST({ version: '10' }).setToken(token);
@@ -107,12 +108,14 @@ function AddEvent (interaction: ChatInputCommandInteraction) {
     const host: string = interaction.user.id;
     const room = interaction.options.getString('room');
     const capacity = interaction.options.getString('capacity');
-    const date: any = interaction.options.getString('starttime');
-    console.log(date)
-    console.log(ISOToEnglishDate(date))
-    console.log(ISOToEnglishTime(date))
+    const startDate: any = interaction.options.getString('starttime');
+    const endDate: any = interaction.options.getString('endtime');
+    // console.log(date)
+    // console.log(ISOToEnglishDate(date))
+    // console.log(ISOToEnglishTime(date))
 
-    const scheduledTime = new Date(date);
+    const scheduledTime1 = new Date(startDate);
+    const scheduledTime2 = new Date(endDate);
     if (title == null || room == null || details == null)
         return;
     
@@ -121,12 +124,15 @@ function AddEvent (interaction: ChatInputCommandInteraction) {
         description: details,
         privacyLevel: 2,
         entityType: 3, //https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-object-guild-scheduled-event-entity-types
-        scheduledStartTime: scheduledTime,
-        scheduledEndTime: new Date(date)
+        scheduledStartTime: scheduledTime1,
+        scheduledEndTime: scheduledTime2,
+        entityMetadata:{
+            location: room
+        }
     });
     
     //creating a document for the embed in the database
-    insertEvent(interaction.guildId, eventId, title, null, date);    
+    insertEvent(interaction.guildId, eventId, title, null, startDate);    
     return;
 }
 
@@ -136,8 +142,8 @@ function createEventEmbed(interaction: ChatInputCommandInteraction){
     const title = interaction.options.getString('title');
     const room = interaction.options.getString('room');
     const capacity = interaction.options.getString('capacity');
-    const time = interaction.options.getString('time');
-    const date: any = interaction.options.getString('date') + ' UTC';
+    const startTime = interaction.options.getString('starttime');
+    const endTime = interaction.options.getString('endtime');
     const details = interaction.options.getString('description');
     const host: string = interaction.user.id;
 
@@ -154,8 +160,8 @@ function createEventEmbed(interaction: ChatInputCommandInteraction){
         .setDescription(details)
         .addFields(
             { name: "ROOM:", value: `${roomEmote + " " + room}`, inline: true },
-            { name: "TIME:", value: `${ISOToEnglishTime(date)}`, inline: true },
-            { name: "DATE:", value: `${ISOToEnglishDate(date)}`, inline: true },
+            { name: "TIME:", value: `${ISOToEnglishTime(startTime)}`, inline: true },
+            { name: "DATE:", value: `${ISOToEnglishDate(endTime)}`, inline: true },
             { name: "HOST:", value: `<@${host}>`, inline: true },
         )
         .setThumbnail('https://i.imgur.com/XX8tyb3.png')
@@ -244,17 +250,17 @@ function ISOToEnglishDate(oldDate) {
     var shownTime: string;
     var tempTime = new Date(oldTime);
     // var oldTime = Math.round(tempDate.getTime() / 1000);
-    var hours: number   = tempTime.getHours()+6;
+    var hours: number   = tempTime.getHours();
     var mins: number | string   = tempTime.getMinutes();  
     
     if (mins < 10)
         mins = `0${mins}`
 
     if(hours > 12) {
-        shownTime = `${hours-12}:${mins} pm`
+        shownTime = `${hours-12}:${mins} PM`
     }
     else
-        shownTime = `${hours}:${mins} am`
+        shownTime = `${hours}:${mins} AM`
     // shownTime = `${hours}:${mins}`
     return shownTime;
  }
