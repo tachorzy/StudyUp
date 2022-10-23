@@ -1,12 +1,10 @@
-import { Client, EmbedBuilder, Routes, ChatInputCommandInteraction, GuildScheduledEvent, Embed, EmbedAssertions, GuildScheduledEventEntityMetadataOptions } from "discord.js";
-import { utimesSync } from "fs";
+import { Client, EmbedBuilder, Routes, ChatInputCommandInteraction, GuildScheduledEvent, Embed, EmbedAssertions, GuildScheduledEventEntityMetadataOptions, GuildScheduledEventStatus } from "discord.js";
 import mongoose from "mongoose"
 import { token, clientId, REST } from './Bot';
-import { insertEvent, findEvent, enrollUser, dropUser } from "./Database";
-import { commands } from "./Commands";
-import { stringify } from "querystring";
-import { start } from "repl";
+import { insertEvent, findEvent } from "./Database";
+import { commands } from "./slashCommands";
 
+//discord bot formality or otherwise called event handling
 export default (client: Client): void => {
     const rest = new REST({ version: '10' }).setToken(token);
 
@@ -14,29 +12,26 @@ export default (client: Client): void => {
         .then((data: any) => console.log(`Successfully registered ${data.length} application commands.`)) //using any for all your types is redundant cuz thats literally just js
         .catch(console.error);
         
-    var participantCollection;
     //upon an interaction via slash command
     client.on('interactionCreate', async interaction => {
         if (!interaction.isChatInputCommand()) return;
     
         const { commandName } = interaction;
         var embed: EmbedBuilder | undefined;
-        //var message: InteractionResponse<boolean>;
         var message;
         switch(commandName){
             case 'addevent':
                 AddEvent(interaction);
-                // embed = createEventEmbed(interaction)
                 await interaction.reply({embeds: [createEventEmbed(interaction)]});
 
                 message = await interaction.fetchReply();
                 message.react('👍');
                 break;
             case 'announce':
-                // embed = announceEvent(interaction);
+                // embed = announcement(interaction);
                 break;
             case 'events':
-                embed = await createEventsEmbed(interaction);
+                embed = await listEventsEmbed(interaction);
                 if(!embed)
                     interaction.reply('There doesn\'t seem to be any scheduled events currently. Check again later!');
                 interaction.reply({embeds: [embed]})
@@ -44,64 +39,43 @@ export default (client: Client): void => {
             case 'help':
                 await interaction.reply({embeds: [help()]})
                 break;
-            case 'search':
-                const doc = await search(interaction.options.getString('id'))
-                await interaction.reply(`test ${doc}`)
-                break;
         }
     });
 
-    //When an event is created we push it to hte 
-    client.on('guildScheduledEventCreate', async interaction => {
-        const embed = NewEvent(interaction);
+    //When an event is created we push it to the database (WIP) 
+    client.on('guildScheduledEventCreate', async event => {
+        const embed = NewEvent(event);
     });
 
-    //When a reaction added
+    //When an event is deleted we send a message
+    client.on('guildScheduledEventDelete', async event => {
+        //new code goes here
+    });
+
+    //When a reaction added, DM Link to user (WIP)
     client.on('messageReactionAdd', async reaction => {
         const embed = reaction.message.embeds.at(0);
         if(await reaction.emoji.name === '👍'){
-            participantCollection = await reaction.users.fetch();
-            console.log(participantCollection);
-            console.log(participantCollection.keys());
-
-                // enrollUser(participantCollection.at(-1), )
+            //new code goes here
         }
     });
-
-    //When reaction removed
-    client.on('messageReactionRemove', async reaction => {
-        participantCollection = await reaction.users.fetch();
-        console.log(participantCollection);
-        console.log(participantCollection.keys());   
-        //we would then update the db here 
-        
-        //ping test
-    });
-
-
 }
 
-//announces a new event upon created
 function NewEvent(event: GuildScheduledEvent){
-    //creating a document for the embed in the database
+    //creating a document for the embed in the database (WIP)
     insertEvent(event.guildId, event.id, event.name, event.url, event.scheduledStartAt);    
-    // const embed = new EmbedBuilder()
-    // .setColor('#32a852')
-    // .setThumbnail(event.image)
-    // .setTitle(`${event.name} has just been announced :notebook_with_decorative_cover:`)
-    // .setDescription(event.description)
-    // .addFields(
-    //     { name: "ROOM:", value: `${event.channel} `, inline: true },
-    //     { name: "Scheduled for:", value: `${event.scheduledStartAt} `, inline: true }
-    // )
-    // // .setThumbnail('https://i.imgur.com/XX8tyb3.png')
-    // .setFooter({text: `🚿 please for the love of the CS department, shower :)`})
-    // return embed;
+}
+
+//whenever we have call guildScheduleEventManager.create() or guildScheduleEventManager.delete() we get a Promise that we
+//attach this callback function to. Once our promise is done waiting we callback here
+function eventCallback(event: GuildScheduledEvent){
+    const eventId: string = event.id
+    insertEvent(event.guildId, eventId, event.name, event.url, event.scheduledStartAt);    
 }
 
 //AddEvent function creates embed for a new event from information received through a slash command
 function AddEvent (interaction: ChatInputCommandInteraction) {
-    const eventId = interaction.id;
+    //grabbing information from slash commands
     const eventType = interaction.options.getString('type');
     const title = interaction.options.getString('title');
     const details = interaction.options.getString('description');
@@ -110,32 +84,31 @@ function AddEvent (interaction: ChatInputCommandInteraction) {
     const capacity = interaction.options.getString('capacity');
     const startDate: any = interaction.options.getString('starttime');
     const endDate: any = interaction.options.getString('endtime');
-    // console.log(date)
-    // console.log(ISOToEnglishDate(date))
-    // console.log(ISOToEnglishTime(date))
-
     const scheduledTime1 = new Date(startDate);
     const scheduledTime2 = new Date(endDate);
+
+    //return if below fields are empty
     if (title == null || room == null || details == null)
         return;
     
-    interaction.guild?.scheduledEvents.create({
-        name: title,
-        description: details,
-        privacyLevel: 2,
-        entityType: 3, //https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-object-guild-scheduled-event-entity-types
-        scheduledStartTime: scheduledTime1,
-        scheduledEndTime: scheduledTime2,
-        entityMetadata:{
-            location: room
-        }
+        //creating an event through discord.js built in Guild Event Scheduler
+        var event: Promise<GuildScheduledEvent<GuildScheduledEventStatus>> | undefined = interaction.guild?.scheduledEvents.create({
+            name: title,
+            description: details,
+            privacyLevel: 2,
+            entityType: 3,
+            scheduledStartTime: scheduledTime1,
+            scheduledEndTime: scheduledTime2,
+            entityMetadata:{
+                location: `Room: ${room}`
+            }
     });
-    
-    //creating a document for the embed in the database
-    insertEvent(interaction.guildId, eventId, title, null, startDate);    
+    const eventId = event?.then(eventCallback);
+    //Check if it is duplicating documents in Mongoose Database (WIP)
     return;
 }
 
+//creates the EVENTS embed that is posted to the channel
 function createEventEmbed(interaction: ChatInputCommandInteraction){
     const eventId = interaction.id;
     const eventType = interaction.options.getString('type');
@@ -154,6 +127,8 @@ function createEventEmbed(interaction: ChatInputCommandInteraction){
     else if(room?.includes('Quad') || room?.includes('QUAD'))
         roomEmote = '<:quad:1017871428055486624>'
 
+
+    //actually creates the embed that is replied to the channel
     const embed = new EmbedBuilder()
         .setColor('#32a852')
         .setTitle(`${eventType} | ${title} :notebook_with_decorative_cover:`)
@@ -174,7 +149,8 @@ function createEventEmbed(interaction: ChatInputCommandInteraction){
     return embed;
 }
 
-async function createEventsEmbed(interaction: ChatInputCommandInteraction){
+//function to list out all ongoing events
+async function listEventsEmbed(interaction: ChatInputCommandInteraction){
     const embed = new EmbedBuilder();
 
     let events: GuildScheduledEvent[] = [];
@@ -201,19 +177,22 @@ async function createEventsEmbed(interaction: ChatInputCommandInteraction){
     return embed;
 }
 
-async function search(interactionId: string | null){
-    findEvent(interactionId);
+//Make an announcement to all the participants of an event
+function announcement(event: GuildScheduledEvent){
+    const participants = event.fetchSubscribers();
+    console.log(participants)
 }
 
-//creates a help embed
+//creates a help embed for all commands
 function help(){
     const ownerid = '<@107022278838996992>'
     const coownerid = '<@242075681046003743>'
+    const coownerid2 = '<@220536344848498690>'
 
     const helpembed = new EmbedBuilder()
         .setColor('#32a852')
         .setTitle('Meet Up With StudyUp')
-        .setDescription(`Brought to you by ${ownerid} and ${coownerid} `)
+        .setDescription(`Brought to you by ${ownerid}, ${coownerid} and ${coownerid2}`)
         .setThumbnail('https://data.whicdn.com/images/323756483/original.gif')
         .addFields(
             {name: 'What is StudyUp?', value: 'StudyUp is a bot made for bringing you and your classmates together outside of the classroom. Form study groups, '
@@ -229,14 +208,12 @@ function help(){
 }
 
 
-//helper functions for converting between ISO and plain-English
+//helper functions for converting DATE between ISO and plain-English
 function ISOToEnglishDate(oldDate) {
     var shownDate: string;
     var tempDate = new Date(oldDate);
-    // var oldTime = Math.round(tempDate.getTime() / 1000);
     var shownDate = '';
-    var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-                      
+    var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];            
     var year    = tempDate.getFullYear(); 
     var month   = tempDate.getMonth();
     var day     = tempDate.getDate(); 
@@ -246,21 +223,19 @@ function ISOToEnglishDate(oldDate) {
     return shownDate;
  }
 
+ //helper function to convert TIME from ISO to plain-English
  function ISOToEnglishTime(oldTime) {
     var shownTime: string;
     var tempTime = new Date(oldTime);
-    // var oldTime = Math.round(tempDate.getTime() / 1000);
     var hours: number   = tempTime.getHours();
     var mins: number | string   = tempTime.getMinutes();  
     
     if (mins < 10)
         mins = `0${mins}`
-
     if(hours > 12) {
         shownTime = `${hours-12}:${mins} PM`
     }
     else
         shownTime = `${hours}:${mins} AM`
-    // shownTime = `${hours}:${mins}`
     return shownTime;
  }

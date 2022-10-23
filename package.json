@@ -1,8 +1,10 @@
 {
   "dependencies": {
-    "discord.js": "^14.3.0",
+    "discord.js": "^14.6.0",
     "dotenv": "^16.0.2",
-    "mongoose": "^6.6.0"
+    "env": "^0.0.2",
+    "mongoose": "^6.6.5",
+    "yarn": "^1.22.19"
   },
   "devDependencies": {
     "@types/node": "^18.7.16",
