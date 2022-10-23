@@ -127,7 +127,7 @@ function AddEvent (interaction: ChatInputCommandInteraction) {
         scheduledStartTime: scheduledTime1,
         scheduledEndTime: scheduledTime2,
         entityMetadata:{
-            location: room
+            location: `Room: ${room}`
         }
     });
     
