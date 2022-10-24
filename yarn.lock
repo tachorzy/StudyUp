@@ -218,10 +218,10 @@
     "undici" "^5.11.0"
     "ws" "^8.9.0"
 
-"dotenv@^16.0.2":
-  "integrity" "sha512-JvpYKUmzQhYoIFgK2MOnF3bciIZoItIIoryihy0rIA+H4Jy0FmgyKYAHCTN98P5ybGSJcIFbh6QKeJdtZd1qhA=="
-  "resolved" "https://registry.npmjs.org/dotenv/-/dotenv-16.0.2.tgz"
-  "version" "16.0.2"
+"dotenv@^16.0.3":
+  "integrity" "sha512-7GO6HghkA5fYG9TYnNxi14/7K9f5occMlp3zXAuSxn7CKCxt9xbNWG7yF8hTCSUchlfWSe3uLmlPfigevRItzQ=="
+  "resolved" "https://registry.npmjs.org/dotenv/-/dotenv-16.0.3.tgz"
+  "version" "16.0.3"
 
 "env@^0.0.2":
   "integrity" "sha512-yP8LfjO4ughSHD/3HgLPinWzexmaOGvRfs2TFx0SZhOm7j1xPi9evjuGcLiNVHIGLmcsgMak4eDbBzlYqGIVxw=="
@@ -283,9 +283,9 @@
   "version" "1.5.0"
 
 "mongodb-connection-string-url@^2.5.3":
-  "integrity" "sha512-f+/WsED+xF4B74l3k9V/XkTVj5/fxFH2o5ToKXd8Iyi5UhM+sO9u0Ape17Mvl/GkZaFtM0HQnzAG5OTmhKw+tQ=="
-  "resolved" "https://registry.npmjs.org/mongodb-connection-string-url/-/mongodb-connection-string-url-2.5.3.tgz"
-  "version" "2.5.3"
+  "integrity" "sha512-SeAxuWs0ez3iI3vvmLk/j2y+zHwigTDKQhtdxTgt5ZCOQQS5+HW4g45/Xw5vzzbn7oQXCNQ24Z40AkJsizEy7w=="
+  "resolved" "https://registry.npmjs.org/mongodb-connection-string-url/-/mongodb-connection-string-url-2.5.4.tgz"
+  "version" "2.5.4"
   dependencies:
     "@types/whatwg-url" "^8.2.1"
     "whatwg-url" "^11.0.0"
@@ -302,10 +302,17 @@
   optionalDependencies:
     "saslprep" "^1.0.3"
 
+<<<<<<< HEAD
 "mongoose@^6.6.5":
   "integrity" "sha512-iA/oDpWOc+K2QYzA4Eq7Z1oUBQOz9FGDmUwPLgw872Bfs/qizA5Db+gJorAn+TnnGu3VoCK8iP4Y+TECUelwjA=="
   "resolved" "https://registry.npmjs.org/mongoose/-/mongoose-6.6.5.tgz"
   "version" "6.6.5"
+=======
+"mongoose@^6.6.7":
+  "integrity" "sha512-CzJebrogP/CIdRba8DopgPUfmxlZFV0K4B+3Lf0mxQOyrRJ+1+48Ucl2PuRJfh2XavjG2NRP5B4pPOiZahsQKw=="
+  "resolved" "https://registry.npmjs.org/mongoose/-/mongoose-6.6.7.tgz"
+  "version" "6.6.7"
+>>>>>>> 5d10ff7 (Fixing Stuff)
   dependencies:
     "bson" "^4.6.5"
     "kareem" "2.4.1"
@@ -386,12 +393,17 @@
   "version" "4.2.0"
 
 "socks@^2.7.0":
-  "integrity" "sha512-scnOe9y4VuiNUULJN72GrM26BNOjVsfPXI+j+98PkyEfsIXroa5ofyjT+FzGvn/xHs73U2JtoBYAVx9Hl4quSA=="
-  "resolved" "https://registry.npmjs.org/socks/-/socks-2.7.0.tgz"
-  "version" "2.7.0"
+  "integrity" "sha512-7maUZy1N7uo6+WVEX6psASxtNlKaNVMlGQKkG/63nEDdLOWNbiUMoLK7X4uYoLhQstau72mLgfEWcXcwsaHbYQ=="
+  "resolved" "https://registry.npmjs.org/socks/-/socks-2.7.1.tgz"
+  "version" "2.7.1"
   dependencies:
     "ip" "^2.0.0"
     "smart-buffer" "^4.2.0"
+
+"span@~0.0.5":
+  "integrity" "sha512-/pDaxDE8jcMP8lRgarab5cirykIZHN0+HyoEq/iU+pUXhwBkcNhRSW3oERFqDE+ZNQyR3tkWJGVNyQn7yLf+Ew=="
+  "resolved" "https://registry.npmjs.org/span/-/span-0.0.6.tgz"
+  "version" "0.0.6"
 
 "sparse-bitfield@^3.0.3":
   "integrity" "sha512-kvzhi7vqKTfkh0PZU+2D2PIllw2ymqJKujUcyPMd9Y75Nv4nPbGJZXNhxsgdQab2BmlDct1YnfQCguEvHr7VsQ=="
@@ -458,6 +470,13 @@
     "make-error" "^1.1.1"
     "v8-compile-cache-lib" "^3.0.1"
     "yn" "3.1.1"
+
+"ts@^0.0.0":
+  "integrity" "sha512-vbXOvciZMgKrKHDVhYXc8X/jOwofDtRG0dB8Hf8GNawe3mmw+zgXZRjKpz89eJrZdPvM+uRM+WfCJf6KBsCfbQ=="
+  "resolved" "https://registry.npmjs.org/ts/-/ts-0.0.0.tgz"
+  "version" "0.0.0"
+  dependencies:
+    "span" "~0.0.5"
 
 "tslib@^2.4.0":
   "integrity" "sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ=="
