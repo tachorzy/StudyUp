@@ -39,6 +39,12 @@ export default (client: Client): void => {
             case 'help':
                 await interaction.reply({embeds: [help()]})
                 break;
+            case 'search':
+                var event = findEvent(interaction.guildId, interaction.options.getString('room'), interaction.options.getString('date'))
+                // const eventTitle = event.then(documentCallback);
+                // interaction.reply(`We found an event titled: ${}`)
+
+                break;
         }
     });
 
@@ -63,14 +69,18 @@ export default (client: Client): void => {
 
 function NewEvent(event: GuildScheduledEvent){
     //creating a document for the embed in the database (WIP)
-    insertEvent(event.guildId, event.id, event.name, event.url, event.scheduledStartAt);    
+    insertEvent(event.guildId, event.id, event.name, event?.entityMetadata?.location, event.url, event.scheduledStartAt);    
+}
+
+function documentCallback(event: mongoose.Document<unknown, any, any>){
+    return event.get('eventTitle');
 }
 
 //whenever we have call guildScheduleEventManager.create() or guildScheduleEventManager.delete() we get a Promise that we
 //attach this callback function to. Once our promise is done waiting we callback here
 function eventCallback(event: GuildScheduledEvent){
     const eventId: string = event.id
-    insertEvent(event.guildId, eventId, event.name, event.url, event.scheduledStartAt);    
+    insertEvent(event.guildId, eventId, event.name, event?.entityMetadata?.location, event.url, event.scheduledStartAt);    
 }
 
 //AddEvent function creates embed for a new event from information received through a slash command
