@@ -6,7 +6,7 @@
 2. `yarn install`
 3. `yarn start`
 
-##.env file format
+## .env file format
 ```
 DISCORD_TOKEN=
 clientId=
