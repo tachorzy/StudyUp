@@ -26,14 +26,6 @@ export async function findEvent(guildId: string | null, roomQuery: string | null
     return await eventModel.find({guildId: guildId, eventRoom: `Room: ${roomQuery}`, eventDate: new Date(dateQuery)}).limit(1);
 }
 
-//deleting by room and date is scuffed
-// export async function delEvent(guildId: string | null, roomQuery: string | null, dateQuery: string | null){
-//     if(!dateQuery || !guildId){
-//         return;
-//     }
-//     return await eventModel.findOneAndDelete({fitler: {guildId: guildId, eventRoom: roomQuery, eventDate: new Date(dateQuery).toISOString()}})
-// }
-
 export async function delEvent(guildId: string | null, eventId: string | null){
     if (!guildId || !eventId){
         return;
