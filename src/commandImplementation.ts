@@ -1,7 +1,7 @@
-import { Client, EmbedBuilder, Routes, ChatInputCommandInteraction, GuildScheduledEvent, Embed, EmbedAssertions, GuildScheduledEventEntityMetadataOptions, GuildScheduledEventStatus } from "discord.js";
+import { Client, EmbedBuilder, Routes, ChatInputCommandInteraction, GuildScheduledEvent, Embed, EmbedAssertions, GuildScheduledEventEntityMetadataOptions, GuildScheduledEventStatus, InteractionCollector } from "discord.js";
 import mongoose from "mongoose"
 import { token, clientId, REST } from './Bot';
-import { insertEvent, findEvent } from "./Database";
+import { insertEvent, findEvent, delEvent } from "./Database";
 import { commands } from "./slashCommands";
 
 //discord bot formality or otherwise called event handling
@@ -21,9 +21,9 @@ export default (client: Client): void => {
         var message;
         switch(commandName){
             case 'addevent':
-                AddEvent(interaction);
-                await interaction.reply({embeds: [createEventEmbed(interaction)]});
-
+                const event = await createEvent(interaction);
+                await interaction.reply({embeds: [createEventEmbed(interaction, event?.id)]});
+                console.log(event)
                 message = await interaction.fetchReply();
                 message.react('👍');
                 break;
@@ -39,19 +39,22 @@ export default (client: Client): void => {
             case 'help':
                 await interaction.reply({embeds: [help()]})
                 break;
+            //this case is just for temporary testing.
             case 'search':
-                var event = findEvent(interaction.guildId, interaction.options.getString('room'), interaction.options.getString('date'))
-                // const eventTitle = event.then(documentCallback);
-                // interaction.reply(`We found an event titled: ${}`)
-
+                findEvent(interaction.guildId, interaction.options.getString('room'), interaction.options.getString('date'))
+                console.log('SEARCH MADE')
+                break;
+            case 'del':
+                delEvent(interaction.guildId, interaction.options.getString('id'))
+                console.log('DELETION MADE')
                 break;
         }
     });
 
     //When an event is created we push it to the database (WIP) 
-    client.on('guildScheduledEventCreate', async event => {
-        const embed = NewEvent(event);
-    });
+    // client.on('guildScheduledEventCreate', async event => {
+    //     const embed = NewEvent(event);
+    // });
 
     //When an event is deleted we send a message
     client.on('guildScheduledEventDelete', async event => {
@@ -67,35 +70,21 @@ export default (client: Client): void => {
     });
 }
 
-function NewEvent(event: GuildScheduledEvent){
-    //creating a document for the embed in the database (WIP)
-    insertEvent(event.guildId, event.id, event.name, event?.entityMetadata?.location, event.url, event.scheduledStartAt);    
-}
-
-function documentCallback(event: mongoose.Document<unknown, any, any>){
-    return event.get('eventTitle');
-}
-
 //whenever we have call guildScheduleEventManager.create() or guildScheduleEventManager.delete() we get a Promise that we
 //attach this callback function to. Once our promise is done waiting we callback here
-function eventCallback(event: GuildScheduledEvent){
+function onInsertion(event: GuildScheduledEvent){
     const eventId: string = event.id
     insertEvent(event.guildId, eventId, event.name, event?.entityMetadata?.location, event.url, event.scheduledStartAt);    
 }
 
 //AddEvent function creates embed for a new event from information received through a slash command
-function AddEvent (interaction: ChatInputCommandInteraction) {
+function createEvent (interaction: ChatInputCommandInteraction) {
     //grabbing information from slash commands
-    const eventType = interaction.options.getString('type');
-    const title = interaction.options.getString('title');
-    const details = interaction.options.getString('description');
-    const host: string = interaction.user.id;
-    const room = interaction.options.getString('room');
-    const capacity = interaction.options.getString('capacity');
+    const title: string | null = interaction.options.getString('title');
+    const details: string | null = interaction.options.getString('description');
+    const room: string | null = interaction.options.getString('room');
     const startDate: any = interaction.options.getString('starttime');
     const endDate: any = interaction.options.getString('endtime');
-    const scheduledTime1 = new Date(startDate);
-    const scheduledTime2 = new Date(endDate);
 
     //return if below fields are empty
     if (title == null || room == null || details == null)
@@ -107,20 +96,19 @@ function AddEvent (interaction: ChatInputCommandInteraction) {
             description: details,
             privacyLevel: 2,
             entityType: 3,
-            scheduledStartTime: scheduledTime1,
-            scheduledEndTime: scheduledTime2,
+            scheduledStartTime: new Date(startDate),
+            scheduledEndTime: new Date(endDate),
             entityMetadata:{
                 location: `Room: ${room}`
             }
     });
-    const eventId = event?.then(eventCallback);
-    //Check if it is duplicating documents in Mongoose Database (WIP)
-    return;
+
+    event?.then(onInsertion)
+    return event;
 }
 
 //creates the EVENTS embed that is posted to the channel
-function createEventEmbed(interaction: ChatInputCommandInteraction){
-    const eventId = interaction.id;
+function createEventEmbed(interaction: ChatInputCommandInteraction, eventId: string | undefined){
     const eventType = interaction.options.getString('type');
     const title = interaction.options.getString('title');
     const room = interaction.options.getString('room');
@@ -137,20 +125,19 @@ function createEventEmbed(interaction: ChatInputCommandInteraction){
     else if(room?.includes('Quad') || room?.includes('QUAD'))
         roomEmote = '<:quad:1017871428055486624>'
 
-
     //actually creates the embed that is replied to the channel
     const embed = new EmbedBuilder()
         .setColor('#32a852')
         .setTitle(`${eventType} | ${title} :notebook_with_decorative_cover:`)
         .setDescription(details)
+        .setThumbnail('https://i.imgur.com/XX8tyb3.png')
         .addFields(
             { name: "ROOM:", value: `${roomEmote + " " + room}`, inline: true },
             { name: "TIME:", value: `${ISOToEnglishTime(startTime)}`, inline: true },
             { name: "DATE:", value: `${ISOToEnglishDate(endTime)}`, inline: true },
             { name: "HOST:", value: `<@${host}>`, inline: true },
         )
-        .setThumbnail('https://i.imgur.com/XX8tyb3.png')
-        .setFooter({text: `🚿 please for the love of the CS department, shower :)\n\nEventId: ${eventId}`})
+        .setFooter({text: `🚿 please for the love of the CS department, shower :)\n\nEventId: ${eventId}`}) //
     
     //only add the capacity to the embed when there's an input for it.
     if(capacity !== null)
@@ -187,11 +174,11 @@ async function listEventsEmbed(interaction: ChatInputCommandInteraction){
     return embed;
 }
 
-//Make an announcement to all the participants of an event
-function announcement(event: GuildScheduledEvent){
-    const participants = event.fetchSubscribers();
-    console.log(participants)
-}
+//Make an announcement to all the participants of an event (WIP)
+// function announcement(event: GuildScheduledEvent){
+//     const participants = event.fetchSubscribers();
+//     console.log(participants)
+// }
 
 //creates a help embed for all commands
 function help(){
