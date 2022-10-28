@@ -21,7 +21,7 @@ export default (client: Client): void => {
         switch(commandName){
             case 'addevent':
                 const event = await createEvent(interaction);
-                createEventEmbed(interaction, event?.id)
+                createEventEmbed(interaction, event, event?.id)
                 break;
             case 'ping':
                 await announcement(interaction);
@@ -104,16 +104,17 @@ function createEvent (interaction: ChatInputCommandInteraction) {
 }
 
 //creates the EVENTS embed that is posted to the channel
-function createEventEmbed(interaction: ChatInputCommandInteraction, eventId: string | undefined){
+function createEventEmbed(interaction: ChatInputCommandInteraction, event: GuildScheduledEvent, eventId: string | undefined){
+    if(event === undefined) return;
+
+
     const eventType = interaction.options.getString('type');
-    const title = interaction.options.getString('title');
     const room = interaction.options.getString('room');
     const capacity = interaction.options.getString('capacity');
-    const startTime = interaction.options.getString('starttime');
-    const endTime = interaction.options.getString('endtime');
     const details = interaction.options.getString('description');
+    const endDate = interaction.options.getString('endtime')
     const host: string = interaction.user.id;
-
+    const thumbnail = 'https://i.imgur.com/XX8tyb3.png'
     //room emote image will change depending on the building you choose. By defualt it's set to a library emote
     var roomEmote = '<:StudyRoom2:1017865348457975838>'
     if(room?.includes('PGH') || room?.includes('pgh'))
@@ -124,13 +125,13 @@ function createEventEmbed(interaction: ChatInputCommandInteraction, eventId: str
     //actually creates the embed that is replied to the channel
     const embed = new EmbedBuilder()
         .setColor('#32a852')
-        .setTitle(`${eventType} | ${title} :notebook_with_decorative_cover:`)
+        .setTitle(`${eventType} | ${event.name} :notebook_with_decorative_cover:`)
         .setDescription(details)
-        .setThumbnail('https://i.imgur.com/XX8tyb3.png')
+        .setThumbnail(thumbnail)
         .addFields(
             { name: "ROOM:", value: `${roomEmote} ${room}`, inline: true },
-            { name: "TIME:", value: `${ISOToEnglishTime(startTime)}-${ISOToEnglishTime(endTime)}`, inline: true },
-            { name: "DATE:", value: `${ISOToEnglishDate(endTime)}`, inline: true },
+            { name: "TIME:", value: `${event.scheduledStartAt}-${ISOToEnglishTime(event.scheduledEndAt)}`, inline: true },
+            { name: "DATE:", value: `${ISOToEnglishDate()}`, inline: true },
             { name: "HOST:", value: `<@${host}>`, inline: true },
         )
         .setFooter({text: `🚿 please for the love of the CS department, shower :)\n\nEventId: ${eventId}`}) //
