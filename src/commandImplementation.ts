@@ -21,7 +21,7 @@ export default (client: Client): void => {
         switch(commandName){
             case 'addevent':
                 const event = await createEvent(interaction);
-                createEventEmbed(interaction, event, event?.id)
+                createEventEmbed(interaction, event)
                 break;
             case 'ping':
                 await announcement(interaction);
@@ -104,15 +104,15 @@ function createEvent (interaction: ChatInputCommandInteraction) {
 }
 
 //creates the EVENTS embed that is posted to the channel
-function createEventEmbed(interaction: ChatInputCommandInteraction, event: GuildScheduledEvent, eventId: string | undefined){
+function createEventEmbed(interaction: ChatInputCommandInteraction, event: GuildScheduledEvent | undefined){
     if(event === undefined) return;
-
 
     const eventType = interaction.options.getString('type');
     const room = interaction.options.getString('room');
     const capacity = interaction.options.getString('capacity');
     const details = interaction.options.getString('description');
-    const endDate = interaction.options.getString('endtime')
+    const startTime = event.scheduledStartAt;
+    const endTime = event.scheduledEndAt;
     const host: string = interaction.user.id;
     const thumbnail = 'https://i.imgur.com/XX8tyb3.png'
     //room emote image will change depending on the building you choose. By defualt it's set to a library emote
@@ -130,11 +130,11 @@ function createEventEmbed(interaction: ChatInputCommandInteraction, event: Guild
         .setThumbnail(thumbnail)
         .addFields(
             { name: "ROOM:", value: `${roomEmote} ${room}`, inline: true },
-            { name: "TIME:", value: `${event.scheduledStartAt}-${ISOToEnglishTime(event.scheduledEndAt)}`, inline: true },
-            { name: "DATE:", value: `${ISOToEnglishDate()}`, inline: true },
+            { name: "TIME:", value: `${ISOToEnglishTime(startTime)}-${ISOToEnglishTime(endTime)}`, inline: true },
+            { name: "DATE:", value: `${ISOToEnglishDate(endTime)}`, inline: true },
             { name: "HOST:", value: `<@${host}>`, inline: true },
         )
-        .setFooter({text: `🚿 please for the love of the CS department, shower :)\n\nEventId: ${eventId}`}) //
+        .setFooter({text: `🚿 please for the love of the CS department, shower :)\n\nEventId: ${event.id}`}) //
     
     //only add the capacity to the embed when there's an input for it.
     if(capacity !== null) 
