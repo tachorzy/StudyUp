@@ -35,15 +35,6 @@ export default (client: Client): void => {
             case 'help':
                 await interaction.reply({embeds: [help()]})
                 break;
-            //this case is just for temporary testing.
-            case 'search':
-                findEvent(interaction.guildId, interaction.options.getString('room'), interaction.options.getString('date'))
-                console.log('SEARCH MADE')
-                break;
-            case 'del':
-                delEvent(interaction.guildId, interaction.options.getString('id'))
-                console.log('DELETION MADE')
-                break;
         }
     });
 
@@ -234,6 +225,9 @@ function help(){
         .setFooter({text: 'developed in TypeScript', iconURL: typescriptLogo})
     return helpembed;
 }
+
+
+
 
 
 //helper functions for converting DATE between ISO and plain-English
