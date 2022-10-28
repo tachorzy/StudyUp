@@ -48,9 +48,13 @@ import { Client, SlashCommandBuilder } from "discord.js";
         new SlashCommandBuilder().setName('help').setDescription('provides help on all available commands'),
         new SlashCommandBuilder().setName('ping').setDescription('Ping everyone in an event and send a message.')
             .addStringOption(option =>
-                option.setName('announcement')
+                option.setName('id')
+                .setDescription('copy the event\'s ID from the events tab or the event embed.')
+                .setRequired(true))
+            .addStringOption(option =>
+                option.setName('message')
                 .setDescription('Have something to share with us?')
-                .setRequired(false))
+                .setRequired(true))
         // new SlashCommandBuilder().setName('delevent').setDescription('Removes an embed and study sesh'),
         // new SlashCommandBuilder().setName('update').setDescription('Updates a study sesh embed with new info'),
     ]	
