@@ -68,10 +68,6 @@ function onInsertion(event: GuildScheduledEvent){
     insertEvent(event.guildId, eventId, event.name, event?.entityMetadata?.location, event.url, event.scheduledStartAt);    
 }
 
-function onFetchSubscribers(event: GuildScheduledEvent){
-
-}
-
 //AddEvent function creates embed for a new event from information received through a slash command
 function createEvent (interaction: ChatInputCommandInteraction) {
     //grabbing information from slash commands
@@ -111,10 +107,12 @@ function createEventEmbed(interaction: ChatInputCommandInteraction, event: Guild
     const room = interaction.options.getString('room');
     const capacity = interaction.options.getString('capacity');
     const details = interaction.options.getString('description');
-    const startTime = event.scheduledStartAt;
-    const endTime = event.scheduledEndAt;
+    const startTime = ISOToEnglishTime(event.scheduledStartAt) ;
+    const endTime = ISOToEnglishTime(event.scheduledEndAt);
+    const endDate = ISOToEnglishDate(event.scheduledEndAt);
     const host: string = interaction.user.id;
     const thumbnail = 'https://i.imgur.com/XX8tyb3.png'
+
     //room emote image will change depending on the building you choose. By defualt it's set to a library emote
     var roomEmote = '<:StudyRoom2:1017865348457975838>'
     if(room?.includes('PGH') || room?.includes('pgh'))
@@ -130,8 +128,8 @@ function createEventEmbed(interaction: ChatInputCommandInteraction, event: Guild
         .setThumbnail(thumbnail)
         .addFields(
             { name: "ROOM:", value: `${roomEmote} ${room}`, inline: true },
-            { name: "TIME:", value: `${ISOToEnglishTime(startTime)}-${ISOToEnglishTime(endTime)}`, inline: true },
-            { name: "DATE:", value: `${ISOToEnglishDate(endTime)}`, inline: true },
+            { name: "TIME:", value: `${startTime}-${endTime}`, inline: true },
+            { name: "DATE:", value: `${endDate}`, inline: true },
             { name: "HOST:", value: `<@${host}>`, inline: true },
         )
         .setFooter({text: `🚿 please for the love of the CS department, shower :)\n\nEventId: ${event.id}`}) //
@@ -149,8 +147,7 @@ async function listEventsEmbed(interaction: ChatInputCommandInteraction){
 
     let events: GuildScheduledEvent[] = [];
     const eventsCollection = await interaction.guild?.scheduledEvents.fetch();
-    if(!eventsCollection)
-        return embed;
+    if(!eventsCollection) return embed;
     eventsCollection.forEach((e: GuildScheduledEvent) => {events.push(e)});
     
     embed
@@ -169,10 +166,6 @@ async function listEventsEmbed(interaction: ChatInputCommandInteraction){
     })
     
     return embed;
-}
-
-async function getSubscribers(subscribers: Promise<Collection<string, GuildScheduledEventUser<false>>> | undefined){
-    return Promise.resolve(subscribers);
 }
 
 async function findGuildScheduledEvent(interaction: ChatInputCommandInteraction){
