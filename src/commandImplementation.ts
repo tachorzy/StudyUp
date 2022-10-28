@@ -1,5 +1,4 @@
 import { Client, EmbedBuilder, Routes, ChatInputCommandInteraction, GuildScheduledEvent, Embed, EmbedAssertions, GuildScheduledEventEntityMetadataOptions, GuildScheduledEventStatus, InteractionCollector, GuildScheduledEventUser, Collection } from "discord.js";
-import mongoose from "mongoose"
 import { token, clientId, REST } from './Bot';
 import { insertEvent, findEvent, delEvent } from "./Database";
 import { commands } from "./slashCommands";
@@ -22,10 +21,7 @@ export default (client: Client): void => {
         switch(commandName){
             case 'addevent':
                 const event = await createEvent(interaction);
-                await interaction.reply({embeds: [createEventEmbed(interaction, event?.id)]});
-                console.log(event)
-                message = await interaction.fetchReply();
-                message.react('👍');
+                createEventEmbed(interaction, event?.id)
                 break;
             case 'ping':
                 await announcement(interaction);
@@ -50,11 +46,6 @@ export default (client: Client): void => {
                 break;
         }
     });
-
-    //When an event is created we push it to the database (WIP) 
-    // client.on('guildScheduledEventCreate', async event => {
-    //     const embed = NewEvent(event);
-    // });
 
     //When an event is deleted we send a message
     client.on('guildScheduledEventDelete', async event => {
@@ -81,7 +72,6 @@ function onFetchSubscribers(event: GuildScheduledEvent){
 
 }
 
-
 //AddEvent function creates embed for a new event from information received through a slash command
 function createEvent (interaction: ChatInputCommandInteraction) {
     //grabbing information from slash commands
@@ -91,21 +81,22 @@ function createEvent (interaction: ChatInputCommandInteraction) {
     const startDate: any = interaction.options.getString('starttime');
     const endDate: any = interaction.options.getString('endtime');
 
-    //return if below fields are empty
     if (title == null || room == null || details == null)
         return;
-    
-        //creating an event through discord.js built in Guild Event Scheduler
-        var event: Promise<GuildScheduledEvent<GuildScheduledEventStatus>> | undefined = interaction.guild?.scheduledEvents.create({
-            name: title,
-            description: details,
-            privacyLevel: 2,
-            entityType: 3,
-            scheduledStartTime: new Date(startDate),
-            scheduledEndTime: new Date(endDate),
-            entityMetadata:{
-                location: `Room: ${room}`
-            }
+    if (new Date(startDate) >= new Date(endDate))
+        interaction.reply('`INVALID DATE ENTERED: Event scheduled to end before it begins. Please enter a valid start and end time.`')
+        
+    //creating an event through discord.js built in Guild Event Scheduler
+    var event: Promise<GuildScheduledEvent<GuildScheduledEventStatus>> | undefined = interaction.guild?.scheduledEvents.create({
+        name: title,
+        description: details,
+        privacyLevel: 2,
+        entityType: 3,
+        scheduledStartTime: new Date(startDate),
+        scheduledEndTime: new Date(endDate),
+        entityMetadata:{
+            location: `Room: ${room}`
+        }
     });
 
     event?.then(onInsertion)
@@ -137,18 +128,18 @@ function createEventEmbed(interaction: ChatInputCommandInteraction, eventId: str
         .setDescription(details)
         .setThumbnail('https://i.imgur.com/XX8tyb3.png')
         .addFields(
-            { name: "ROOM:", value: `${roomEmote + " " + room}`, inline: true },
-            { name: "TIME:", value: `${ISOToEnglishTime(startTime)}`, inline: true },
+            { name: "ROOM:", value: `${roomEmote} ${room}`, inline: true },
+            { name: "TIME:", value: `${ISOToEnglishTime(startTime)}-${ISOToEnglishTime(endTime)}`, inline: true },
             { name: "DATE:", value: `${ISOToEnglishDate(endTime)}`, inline: true },
             { name: "HOST:", value: `<@${host}>`, inline: true },
         )
         .setFooter({text: `🚿 please for the love of the CS department, shower :)\n\nEventId: ${eventId}`}) //
     
     //only add the capacity to the embed when there's an input for it.
-    if(capacity !== null)
-            embed.addFields({ name: "ROOM CAPACITY:", value: `**${capacity}** participants`, inline: true })
+    if(capacity !== null) 
+        embed.addFields({ name: "ROOM CAPACITY:", value: `**${capacity}** participants`, inline: true })
     
-    return embed;
+    interaction.reply({embeds: [embed]});
 }
 
 //function to list out all ongoing events
@@ -172,7 +163,7 @@ async function listEventsEmbed(interaction: ChatInputCommandInteraction){
     
     events.forEach((e: GuildScheduledEvent) => {
         embed.addFields({
-            name: `${e.name}`, value: `${e.description}\n**Time:** ${e.scheduledStartAt}\n**Host:** ${e.creator}\n**Set a Reminder!**\n${e.url}`
+            name: `${e.name}`, value: `${e.description}\n**Time:** ${e.scheduledStartAt}-${e.scheduledEndAt}\n**Host:** ${e.creator}\n**Set a Reminder!**\n${e.url}`
         })
     })
     
@@ -253,15 +244,13 @@ function help(){
 
 //helper functions for converting DATE between ISO and plain-English
 function ISOToEnglishDate(oldDate) {
-    var shownDate: string;
     var tempDate = new Date(oldDate);
-    var shownDate = '';
     var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];            
     var year    = tempDate.getFullYear(); 
     var month   = tempDate.getMonth();
     var day     = tempDate.getDate(); 
 
-    shownDate = `${months[month]} ${day}, ${year}`
+    var shownDate: string = `${months[month]} ${day}, ${year}`
                  
     return shownDate;
  }
