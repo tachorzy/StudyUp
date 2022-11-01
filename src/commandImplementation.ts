@@ -1,4 +1,5 @@
-import { Client, EmbedBuilder, Routes, ChatInputCommandInteraction, GuildScheduledEvent, Embed, EmbedAssertions, GuildScheduledEventEntityMetadataOptions, GuildScheduledEventStatus } from "discord.js";
+import { channel } from "diagnostics_channel";
+import { Client, EmbedBuilder, Routes, ChatInputCommandInteraction, GuildScheduledEvent, Embed, EmbedAssertions, GuildScheduledEventEntityMetadataOptions, GuildScheduledEventStatus, Options } from "discord.js";
 import mongoose from "mongoose"
 import { token, clientId, REST } from './Bot';
 import { insertEvent, findEvent } from "./Database";
@@ -21,11 +22,16 @@ export default (client: Client): void => {
         var message;
         switch(commandName){
             case 'addevent':
-                AddEvent(interaction);
+                const ev = AddEvent(interaction);
                 await interaction.reply({embeds: [createEventEmbed(interaction)]});
 
                 message = await interaction.fetchReply();
                 message.react('👍');
+                var invite = (await ev)?.createInviteURL({
+                    channel: interaction.channelId
+                });
+                const value = eventCallbackTemp(invite);
+                interaction.channel?.send(value.toString())
                 break;
             case 'announce':
                 // embed = announcement(interaction);
@@ -66,7 +72,10 @@ export default (client: Client): void => {
         }
     });
 }
-
+async function eventCallbackTemp(event: Promise<string> | undefined){
+    const Value = await event;
+    return Value; 
+}
 function NewEvent(event: GuildScheduledEvent){
     //creating a document for the embed in the database (WIP)
     insertEvent(event.guildId, event.id, event.name, event?.entityMetadata?.location, event.url, event.scheduledStartAt);    
@@ -100,7 +109,10 @@ function AddEvent (interaction: ChatInputCommandInteraction) {
     //return if below fields are empty
     if (title == null || room == null || details == null)
         return;
-    
+    if(scheduledTime2 <= scheduledTime1 || endDate < startDate){
+        interaction.reply('You can\'t put a time/date in that is equal to or before the start time! Please run the command again fixing the end time/date : )');
+        return;
+    }
         //creating an event through discord.js built in Guild Event Scheduler
         var event: Promise<GuildScheduledEvent<GuildScheduledEventStatus>> | undefined = interaction.guild?.scheduledEvents.create({
             name: title,
@@ -115,7 +127,9 @@ function AddEvent (interaction: ChatInputCommandInteraction) {
     });
     const eventId = event?.then(eventCallback);
     //Check if it is duplicating documents in Mongoose Database (WIP)
-    return;
+
+    return event;
+
 }
 
 //creates the EVENTS embed that is posted to the channel
