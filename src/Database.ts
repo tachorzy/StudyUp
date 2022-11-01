@@ -20,11 +20,16 @@ export function insertEvent(guildId: string | null, eventId: string | null, titl
 }
 
 //finds an event from the database and returns the title and list of participants.
-export async function findEvent(guildId: string | null, roomQuery: string | null, dateQueryString: string | null){
-    if(!dateQueryString)
+export async function findEvent(guildId: string | null, roomQuery: string | null, dateQuery: string | null){
+    if(!dateQuery || !guildId)
         return;
-    const dateQuery: Date = new Date(dateQueryString)
-    const eventFound = await eventModel.find({guildId: guildId, eventRoom: `Room: ${roomQuery}`, eventDate: dateQuery}).limit(1);
-    console.log(eventFound);
-    return eventFound;
+    return await eventModel.find({guildId: guildId, eventRoom: `Room: ${roomQuery}`, eventDate: new Date(dateQuery)}).limit(1);
+}
+
+export async function delEvent(guildId: string | null, eventId: string | null){
+    if (!guildId || !eventId){
+        return;
+    }
+    console.log(`deleting eventId: ${eventId}`)
+    return await eventModel.findOneAndDelete({fitler: {guildId: guildId, eventId: eventId}})
 }
