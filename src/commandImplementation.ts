@@ -1,3 +1,4 @@
+import { channel } from "diagnostics_channel";
 import { Client, EmbedBuilder, Routes, ChatInputCommandInteraction, GuildScheduledEvent, Embed, EmbedAssertions, GuildScheduledEventEntityMetadataOptions, GuildScheduledEventStatus, InteractionCollector, GuildScheduledEventUser, Collection } from "discord.js";
 import { token, clientId, REST } from './Bot';
 import { insertEvent, findEvent, delEvent } from "./Database";
@@ -94,8 +95,8 @@ function createEvent (interaction: ChatInputCommandInteraction) {
             location: `Room: ${room}`
         }
     });
-
-    event?.then(onInsertion)
+    
+    const eventId = event?.then(onInsertion);
     return event;
 }
 
