@@ -1,7 +1,9 @@
-import { Client, EmbedBuilder, Routes, ChatInputCommandInteraction, GuildScheduledEvent, Embed, EmbedAssertions, GuildScheduledEventEntityMetadataOptions, GuildScheduledEventStatus, InteractionCollector, GuildScheduledEventUser, Collection } from "discord.js";
+import { Client, EmbedBuilder, Routes, ChatInputCommandInteraction, GuildScheduledEvent, Embed, EmbedAssertions, GuildScheduledEventEntityMetadataOptions, GuildScheduledEventStatus, InteractionCollector, GuildScheduledEventUser, Collection, Guild } from "discord.js";
 import { token, clientId, REST } from './Bot';
 import { insertEvent, findEvent, delEvent } from "./Database";
 import { commands } from "./slashCommands";
+
+const cronJob = require('node-cron');
 
 //discord bot formality or otherwise called event handling
 export default (client: Client): void => {
@@ -16,11 +18,10 @@ export default (client: Client): void => {
         if (!interaction.isChatInputCommand()) return;
     
         const { commandName } = interaction;
-        var embed: EmbedBuilder | undefined;
-        var message;
+        let embed: EmbedBuilder | undefined;
         switch(commandName){
             case 'addevent':
-                const event = await createEvent(interaction);
+                let event = await createEvent(interaction);
                 createEventEmbed(interaction, event)
                 break;
             case 'ping':
@@ -34,6 +35,11 @@ export default (client: Client): void => {
                 break;
             case 'help':
                 await interaction.reply({embeds: [help()]})
+                break;
+            case 'schedule':
+                const eventScheduled: GuildScheduledEvent<GuildScheduledEventStatus> | undefined = await scheduleRecuringEvent(interaction);
+                console.log(eventScheduled)
+                createEventEmbed(interaction, eventScheduled)
                 break;
         }
     });
@@ -74,7 +80,7 @@ function createEvent (interaction: ChatInputCommandInteraction) {
         interaction.reply('`INVALID DATE ENTERED: Event scheduled to end before it begins. Please enter a valid start and end time.`')
         
     //creating an event through discord.js built in Guild Event Scheduler
-    var event: Promise<GuildScheduledEvent<GuildScheduledEventStatus>> | undefined = interaction.guild?.scheduledEvents.create({
+    let event: Promise<GuildScheduledEvent<GuildScheduledEventStatus>> | undefined = interaction.guild?.scheduledEvents.create({
         name: title,
         description: details,
         privacyLevel: 2,
@@ -94,6 +100,7 @@ function createEvent (interaction: ChatInputCommandInteraction) {
 function createEventEmbed(interaction: ChatInputCommandInteraction, event: GuildScheduledEvent | undefined){
     if(event === undefined) return;
 
+    console.log(interaction)
     const eventType = interaction.options.getString('type');
     const room = interaction.options.getString('room');
     const capacity = interaction.options.getString('capacity');
@@ -105,7 +112,7 @@ function createEventEmbed(interaction: ChatInputCommandInteraction, event: Guild
     const thumbnail = 'https://i.imgur.com/XX8tyb3.png'
 
     //room emote image will change depending on the building you choose. By defualt it's set to a library emote
-    var roomEmote = '<:StudyRoom2:1017865348457975838>'
+    let roomEmote = '<:StudyRoom2:1017865348457975838>'
     if(room?.includes('PGH') || room?.includes('pgh'))
         roomEmote = '<:pgh:1017868374040129588>'
     else if(room?.includes('Quad') || room?.includes('QUAD'))
@@ -130,6 +137,19 @@ function createEventEmbed(interaction: ChatInputCommandInteraction, event: Guild
         embed.addFields({ name: "ROOM CAPACITY:", value: `**${capacity}** participants`, inline: true })
     
     interaction.reply({embeds: [embed]});
+}
+
+async function scheduleRecuringEvent(interaction: ChatInputCommandInteraction){    
+    let localInteraction = interaction
+    let dayOfWeek = interaction.options.getString('day_of_the_week');
+    let event: GuildScheduledEvent | undefined;
+    //first param: second (optional), second param: minute, third param: hour, fourth param: day of month, fifth param: month, sixth param: day of week
+    cronJob.schedule(`0 0 0 * * ${dayOfWeek}`, async () => {
+        console.log('CRON JOB: scheduling an event')
+        event = await createEvent(localInteraction);
+        return event;
+    });
+    return event;
 }
 
 //function to list out all ongoing events
@@ -170,7 +190,7 @@ async function findGuildScheduledEvent(interaction: ChatInputCommandInteraction)
 // Make an announcement to all the participants of an event (WIP)
 async function announcement(interaction: ChatInputCommandInteraction){
     //finds the event from the discord server's event collection
-    var event: GuildScheduledEvent | undefined;
+    let event: GuildScheduledEvent | undefined;
     const eventsCollection = await interaction.guild?.scheduledEvents.fetch();
     eventsCollection?.forEach((e: GuildScheduledEvent) => {
         if(e.id == interaction.options.getString('id')) event = e;
@@ -179,12 +199,12 @@ async function announcement(interaction: ChatInputCommandInteraction){
     if(event === undefined) return;
     
     //embed setup
-    var userTags: string = '';
-    var msg: string | null = interaction.options.getString('message');
+    let userTags: string = '';
+    let msg: string | null = interaction.options.getString('message');
     
     if(msg === null) return;
 
-    var embed = new EmbedBuilder()
+    let embed = new EmbedBuilder()
         .setColor('#ff2f3d')
         .setTitle(`ANNOUNCEMENT FOR ${event.name}`)
         .setFooter({text: `🚿 and as always please stay showered\n\nEventId: ${event.id}`})
@@ -226,29 +246,25 @@ function help(){
     return helpembed;
 }
 
-
-
-
-
 //helper functions for converting DATE between ISO and plain-English
 function ISOToEnglishDate(oldDate) {
-    var tempDate = new Date(oldDate);
-    var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];            
-    var year    = tempDate.getFullYear(); 
-    var month   = tempDate.getMonth();
-    var day     = tempDate.getDate(); 
+    const tempDate = new Date(oldDate);
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];            
+    const year    = tempDate.getFullYear(); 
+    const month   = tempDate.getMonth();
+    const day     = tempDate.getDate(); 
 
-    var shownDate: string = `${months[month]} ${day}, ${year}`
+    const shownDate: string = `${months[month]} ${day}, ${year}`
                  
     return shownDate;
  }
 
  //helper function to convert TIME from ISO to plain-English
  function ISOToEnglishTime(oldTime) {
-    var shownTime: string;
-    var tempTime = new Date(oldTime);
-    var hours: number   = tempTime.getHours();
-    var mins: number | string   = tempTime.getMinutes();  
+    let shownTime: string;
+    const tempTime = new Date(oldTime);
+    let hours: number   = tempTime.getHours();
+    let mins: number | string   = tempTime.getMinutes();  
     
     if (mins < 10)
         mins = `0${mins}`
