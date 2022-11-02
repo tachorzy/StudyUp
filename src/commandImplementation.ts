@@ -1,6 +1,6 @@
 import { channel } from "diagnostics_channel";
-import { Client, EmbedBuilder, Routes, ChatInputCommandInteraction, GuildScheduledEvent, Embed, EmbedAssertions, GuildScheduledEventEntityMetadataOptions, GuildScheduledEventStatus, InteractionCollector, GuildScheduledEventUser, Collection } from "discord.js";
-import { token, clientId, REST } from './Bot';
+import { Client, EmbedBuilder, Routes, ChatInputCommandInteraction, GuildScheduledEvent, Embed, EmbedAssertions, GuildScheduledEventEntityMetadataOptions, GuildScheduledEventStatus, InteractionCollector, GuildScheduledEventUser, Collection, ActionRowBuilder, ButtonBuilder, ButtonStyle, APIActionRowComponent, AnyComponentBuilder } from "discord.js";
+import { token, clientId, REST, guildId } from './Bot';
 import { insertEvent, findEvent, delEvent } from "./Database";
 import { commands } from "./slashCommands";
 
@@ -22,7 +22,11 @@ export default (client: Client): void => {
         switch(commandName){
             case 'addevent':
                 const event = await createEvent(interaction);
-                createEventEmbed(interaction, event)
+                //create an invite link alongside the creation of an event and pass that as a parameter to the createEventEmbed function so that we can add the invite as a link to the Embed.
+                let invite = event?.createInviteURL({channel: interaction.channelId}).then(invite => {
+                    createEventEmbed(interaction, event, invite)
+                })
+                
                 break;
             case 'ping':
                 await announcement(interaction);
@@ -101,7 +105,7 @@ function createEvent (interaction: ChatInputCommandInteraction) {
 }
 
 //creates the EVENTS embed that is posted to the channel
-function createEventEmbed(interaction: ChatInputCommandInteraction, event: GuildScheduledEvent | undefined){
+function createEventEmbed(interaction: ChatInputCommandInteraction, event: GuildScheduledEvent | undefined, invite: string){
     if(event === undefined) return;
 
     const eventType = interaction.options.getString('type');
@@ -133,13 +137,21 @@ function createEventEmbed(interaction: ChatInputCommandInteraction, event: Guild
             { name: "DATE:", value: `${endDate}`, inline: true },
             { name: "HOST:", value: `<@${host}>`, inline: true },
         )
-        .setFooter({text: `🚿 please for the love of the CS department, shower :)\n\nEventId: ${event.id}`}) //
-    
+        .setFooter({text: `🚿 please for the love of the CS department, shower :)\n\nEventId: ${event.id}`}) 
+    //create a button and add to reply so that people can also easily "interest" the event
+    const row = new ActionRowBuilder<ButtonBuilder>()
+        .addComponents(
+            new ButtonBuilder()
+					.setLabel('Click me if your interested in this event!')
+					.setStyle(ButtonStyle.Link)
+                    .setURL(invite)
+        );
+
     //only add the capacity to the embed when there's an input for it.
     if(capacity !== null) 
         embed.addFields({ name: "ROOM CAPACITY:", value: `**${capacity}** participants`, inline: true })
     
-    interaction.reply({embeds: [embed]});
+    interaction.reply({components: [row], embeds: [embed]});
 }
 
 //function to list out all ongoing events
