@@ -3,7 +3,7 @@ import { Client, EmbedBuilder, Routes, ChatInputCommandInteraction, GuildSchedul
 import { token, clientId, REST, guildId } from './Bot';
 import { insertEvent, findEvent, delEvent } from "./Database";
 import { commands } from "./slashCommands";
-
+//testing branch changes
 //discord bot formality or otherwise called event handling
 export default (client: Client): void => {
     const rest = new REST({ version: '10' }).setToken(token);
