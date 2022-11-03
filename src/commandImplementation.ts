@@ -23,7 +23,7 @@ export default (client: Client): void => {
             case 'addevent':
                 const event = await createEvent(interaction);
                 //create an invite link alongside the creation of an event and pass that as a parameter to the createEventEmbed function so that we can add the invite as a link to the Embed.
-                let invite = event?.createInviteURL({channel: interaction.channelId}).then(invite => {
+                event?.createInviteURL({channel: interaction.channelId}).then(invite => {
                     createEventEmbed(interaction, event, invite)
                 })
                 break;
@@ -42,7 +42,9 @@ export default (client: Client): void => {
             case 'schedule':
                 const eventScheduled: GuildScheduledEvent<GuildScheduledEventStatus> | undefined = await scheduleRecuringEvent(interaction);
                 console.log(eventScheduled)
-                createEventEmbed(interaction, eventScheduled)
+                eventScheduled?.createInviteURL({channel: interaction.channelId}).then(invite => {
+                    createEventEmbed(interaction, event, invite)
+                })               
                 break;
         }
     });
