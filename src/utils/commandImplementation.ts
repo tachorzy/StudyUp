@@ -6,7 +6,7 @@ import { listEventsEmbed } from "../command/listEvents";
 import { announcement } from "../command/announcement";
 import { help } from "../command/help";
 import { scheduleRecuringEvent } from "../command/scheduleEvent";
-import { printPage, editPage } from "../command/map";
+import { printPage, buttonInteractionHandler } from "../command/map";
 
 //discord bot formality or otherwise called event handling
 export default (client: Client): void => {
@@ -57,16 +57,7 @@ export default (client: Client): void => {
             case 'map':
                 printPage(interaction)
                 client.on("interactionCreate", buttonInteraction => {
-                    if(!buttonInteraction.isButton()) return
-                    
-                    if(buttonInteraction.customId === 'first-page')
-                        editPage(interaction, 0)
-                    else if(buttonInteraction.customId === 'second-page')
-                        editPage(interaction, 1)
-                    else if(buttonInteraction.customId === 'third-page')
-                        editPage(interaction, 2)
-
-                    buttonInteraction.deferUpdate()
+                    buttonInteractionHandler(buttonInteraction, interaction);
                 })
                 break;
         }

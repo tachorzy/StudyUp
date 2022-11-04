@@ -1,5 +1,4 @@
-import { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, ChatInputCommandInteraction, ActionRow } from "discord.js";
-import { client } from "src/Bot";
+import { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, ChatInputCommandInteraction, Interaction, CacheType } from "discord.js";
 
 //prints the first page by default, takes in the slash command interaction and the page number (from the button)
 export function printPage(interaction: ChatInputCommandInteraction, page=0){
@@ -9,6 +8,20 @@ export function printPage(interaction: ChatInputCommandInteraction, page=0){
 //edits the reply given, same format as above
 export function editPage(interaction: ChatInputCommandInteraction, page=0){
     interaction.editReply({ embeds: [embedPages[page]], components: [rowList[page]] })
+}
+
+//handles ButtonInteractions based on ids
+export function buttonInteractionHandler(buttonInteraction: Interaction<CacheType>, interaction: ChatInputCommandInteraction){
+    if(!buttonInteraction.isButton()) return
+                    
+    if(buttonInteraction.customId === 'first-page')
+        editPage(interaction, 0)
+    else if(buttonInteraction.customId === 'second-page')
+        editPage(interaction, 1)
+    else if(buttonInteraction.customId === 'third-page')
+        editPage(interaction, 2)
+
+    buttonInteraction.deferUpdate()
 }
 
 //Creating the array of Embeds, one for each floor in the library.
