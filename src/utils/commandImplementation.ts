@@ -1,4 +1,4 @@
-import { Client, EmbedBuilder, Routes, GuildScheduledEvent, GuildScheduledEventStatus } from "discord.js";
+import { Client, EmbedBuilder, Routes, GuildScheduledEvent, GuildScheduledEventStatus, Events, MessageComponentInteraction, MessageComponent, ButtonInteraction } from "discord.js";
 import { token, clientId, REST } from '../Bot';
 import { commands } from "../utils/slashCommands";
 import { createEvent, createEventEmbed } from"../command/createEvent";
@@ -6,6 +6,9 @@ import { listEventsEmbed } from "../command/listEvents";
 import { announcement } from "../command/announcement";
 import { help } from "../command/help";
 import { scheduleRecuringEvent } from "../command/scheduleEvent";
+import { printPage, editPage } from "../command/directions";
+
+// const paginationEmbed = require('discordjs-button-pagination');
 
 //discord bot formality or otherwise called event handling
 export default (client: Client): void => {
@@ -53,10 +56,24 @@ export default (client: Client): void => {
                     createEventEmbed(interaction, new Date(scheduledEndTime) ,scheduledEvent, invite)
                 })               
                 break;
+            case 'directions':
+                printPage(interaction)
+                client.on("interactionCreate", buttonInteraction => {
+                    if(!buttonInteraction.isButton()) return
+                    
+                    if(buttonInteraction.customId === 'first-page')
+                        editPage(interaction, 0)
+                    else if(buttonInteraction.customId === 'second-page')
+                        editPage(interaction, 1)
+                    else if(buttonInteraction.customId === 'third-page')
+                        editPage(interaction, 2)
+                    
+                    buttonInteraction.deferUpdate()
+                })
+                break;
         }
     });
 
-    
     //When an event is deleted we send a message
     client.on('guildScheduledEventDelete', async event => {
         //new code goes here
