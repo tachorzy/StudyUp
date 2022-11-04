@@ -17,6 +17,7 @@ console.log(`MongoDB token: ${dbtoken}`);
 
 export const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessageReactions, GatewayIntentBits.GuildMessages, GatewayIntentBits.GuildScheduledEvents]});
 
+/*
 client.once('ready', async () => {
 	await mongoose.connect(
 		dbtoken || '',
@@ -26,6 +27,7 @@ client.once('ready', async () => {
 	)
 	console.log('Ready!');
 });
+*/
 
 command(client);
 client.login(token);
