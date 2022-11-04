@@ -1,0 +1,1352 @@
+<div class="controls">
+    <div class="well s-lc-eq-wiget-well">
+        <h1>
+            MDA Group Study Rooms
+
+                    </h1>
+
+        <div class="form-group">
+            <select id="capacity" name="capacity" class="form-control">
+                <option value="0">
+                    All Spaces (not seats)
+                </option>
+
+                                    <option value="2" >Space For 7-8 people</option>
+                                    <option value="3" >Space For 9-11 people</option>
+                            </select>
+        </div>
+
+        <div class="form-group">
+            <select id="date" name="date" class="form-control">
+                                    <option value="2022-11-04" selected="selected">Friday, November 4, 2022</option>
+                                    <option value="2022-11-05" >Saturday, November 5, 2022</option>
+                                    <option value="2022-11-06" >Sunday, November 6, 2022</option>
+                                    <option value="2022-11-07" >Monday, November 7, 2022</option>
+                                    <option value="2022-11-08" >Tuesday, November 8, 2022</option>
+                                    <option value="2022-11-09" >Wednesday, November 9, 2022</option>
+                                    <option value="2022-11-10" >Thursday, November 10, 2022</option>
+                                    <option value="2022-11-11" >Friday, November 11, 2022</option>
+                            </select>
+        </div>
+    </div>
+</div>
+
+
+<form id="s-lc-eq-tform" method="post">
+    <div class="times">
+        <input type="hidden" id="iid" name="iid" value="4043">        <input type="hidden" id="gid" name="gid" value="6713">
+                                    
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        106F
+
+                                                    <a data-toggle="modal" data-target="#item-25377"><i class="fa fa-info-circle s-lc-eqw-info"></i></a>
+                        
+                                                    <span class="pull-right s-lc-eqw-rcap">Capacity 7</span>
+                                            </div>
+
+                                            <div class="modal fade s-lc-eqw-modal" id="item-25377" tabindex="-1" role="dialog" aria-labelledby="item-25377-label" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title" id="item-25377-label">106F</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Room&nbsp;includes a PC&nbsp;connected to a large display</p>
+
+<p>Visit the Service Desk for cables to connect personal laptops to TV screen</p>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                    <div class="panel-body" id="slots-25377">
+                                                    <div class="checkbox">
+                                <label for="s25377_1667568600">
+                                    <input type="checkbox" name="times[]" id="s25377_1667568600" value="1" data-start="2022-11-04 08:30" data-end="2022-11-04 09:00" data-eid="25377" data-crc="20f87fb77527b97c8f353946acbc4a27" class="booking-checkbox" >
+                                    8:30am - 9:00am, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s25377_1667583000">
+                                    <input type="checkbox" name="times[]" id="s25377_1667583000" value="1" data-start="2022-11-04 12:30" data-end="2022-11-04 13:00" data-eid="25377" data-crc="ca8265526257834fef304d28f6a64108" class="booking-checkbox" >
+                                    12:30pm - 1:00pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s25377_1667584800">
+                                    <input type="checkbox" name="times[]" id="s25377_1667584800" value="1" data-start="2022-11-04 13:00" data-end="2022-11-04 13:30" data-eid="25377" data-crc="715157589fc30b581850d7bb44a79602" class="booking-checkbox" >
+                                    1:00pm - 1:30pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s25377_1667586600">
+                                    <input type="checkbox" name="times[]" id="s25377_1667586600" value="1" data-start="2022-11-04 13:30" data-end="2022-11-04 14:00" data-eid="25377" data-crc="0b8bcec131e0c7c691b358511718184b" class="booking-checkbox" >
+                                    1:30pm - 2:00pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s25377_1667588400">
+                                    <input type="checkbox" name="times[]" id="s25377_1667588400" value="1" data-start="2022-11-04 14:00" data-end="2022-11-04 14:30" data-eid="25377" data-crc="0e86d78078fccb6f6741a7336132f406" class="booking-checkbox" >
+                                    2:00pm - 2:30pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s25377_1667599200">
+                                    <input type="checkbox" name="times[]" id="s25377_1667599200" value="1" data-start="2022-11-04 17:00" data-end="2022-11-04 17:30" data-eid="25377" data-crc="d338cf7ba764b158b4dc030065db777a" class="booking-checkbox" >
+                                    5:00pm - 5:30pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                            </div>
+                </div>
+
+                            
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        106G
+
+                                                    <a data-toggle="modal" data-target="#item-25378"><i class="fa fa-info-circle s-lc-eqw-info"></i></a>
+                        
+                                                    <span class="pull-right s-lc-eqw-rcap">Capacity 7</span>
+                                            </div>
+
+                                            <div class="modal fade s-lc-eqw-modal" id="item-25378" tabindex="-1" role="dialog" aria-labelledby="item-25378-label" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title" id="item-25378-label">106G</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Room&nbsp;includes a PC&nbsp;connected to a large display</p>
+
+<p>Visit the Service Desk for cables to connect personal laptops to TV screen</p>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                    <div class="panel-body" id="slots-25378">
+                                                    <div class="checkbox">
+                                <label for="s25378_1667568600">
+                                    <input type="checkbox" name="times[]" id="s25378_1667568600" value="1" data-start="2022-11-04 08:30" data-end="2022-11-04 09:00" data-eid="25378" data-crc="881dbfb731ead0ea18a42e3625db1c3d" class="booking-checkbox" >
+                                    8:30am - 9:00am, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s25378_1667570400">
+                                    <input type="checkbox" name="times[]" id="s25378_1667570400" value="1" data-start="2022-11-04 09:00" data-end="2022-11-04 09:30" data-eid="25378" data-crc="e8b202b40001120c29bfae301705f119" class="booking-checkbox" >
+                                    9:00am - 9:30am, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s25378_1667572200">
+                                    <input type="checkbox" name="times[]" id="s25378_1667572200" value="1" data-start="2022-11-04 09:30" data-end="2022-11-04 10:00" data-eid="25378" data-crc="20d6364451453736e977aa0d11ef6105" class="booking-checkbox" >
+                                    9:30am - 10:00am, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s25378_1667574000">
+                                    <input type="checkbox" name="times[]" id="s25378_1667574000" value="1" data-start="2022-11-04 10:00" data-end="2022-11-04 10:30" data-eid="25378" data-crc="ff65be5f33523ce46809d0f6bbd34ebe" class="booking-checkbox" >
+                                    10:00am - 10:30am, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s25378_1667575800">
+                                    <input type="checkbox" name="times[]" id="s25378_1667575800" value="1" data-start="2022-11-04 10:30" data-end="2022-11-04 11:00" data-eid="25378" data-crc="df9002b61b07eb419b5542aa05383693" class="booking-checkbox" >
+                                    10:30am - 11:00am, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s25378_1667577600">
+                                    <input type="checkbox" name="times[]" id="s25378_1667577600" value="1" data-start="2022-11-04 11:00" data-end="2022-11-04 11:30" data-eid="25378" data-crc="f01fa5328724dde58083ab09a6115af3" class="booking-checkbox" >
+                                    11:00am - 11:30am, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s25378_1667579400">
+                                    <input type="checkbox" name="times[]" id="s25378_1667579400" value="1" data-start="2022-11-04 11:30" data-end="2022-11-04 12:00" data-eid="25378" data-crc="8f66546db263d653e7073d450a380b98" class="booking-checkbox" >
+                                    11:30am - 12:00pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s25378_1667581200">
+                                    <input type="checkbox" name="times[]" id="s25378_1667581200" value="1" data-start="2022-11-04 12:00" data-end="2022-11-04 12:30" data-eid="25378" data-crc="ffe9a81225cc194d787cb130ae9519bc" class="booking-checkbox" >
+                                    12:00pm - 12:30pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s25378_1667601000">
+                                    <input type="checkbox" name="times[]" id="s25378_1667601000" value="1" data-start="2022-11-04 17:30" data-end="2022-11-04 18:00" data-eid="25378" data-crc="951d379559f62c2b82a74f3a9dc1fb14" class="booking-checkbox" >
+                                    5:30pm - 6:00pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s25378_1667602800">
+                                    <input type="checkbox" name="times[]" id="s25378_1667602800" value="1" data-start="2022-11-04 18:00" data-end="2022-11-04 18:30" data-eid="25378" data-crc="b432a23de1f757987eea73ed77e9bd57" class="booking-checkbox" >
+                                    6:00pm - 6:30pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s25378_1667604600">
+                                    <input type="checkbox" name="times[]" id="s25378_1667604600" value="1" data-start="2022-11-04 18:30" data-end="2022-11-04 19:00" data-eid="25378" data-crc="40f9a00e3354873d4f12b83c7c5d7d2b" class="booking-checkbox" >
+                                    6:30pm - 7:00pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s25378_1667606400">
+                                    <input type="checkbox" name="times[]" id="s25378_1667606400" value="1" data-start="2022-11-04 19:00" data-end="2022-11-04 19:30" data-eid="25378" data-crc="a59517894f7dd577cb4cc8613fde91f8" class="booking-checkbox" >
+                                    7:00pm - 7:30pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s25378_1667608200">
+                                    <input type="checkbox" name="times[]" id="s25378_1667608200" value="1" data-start="2022-11-04 19:30" data-end="2022-11-04 20:00" data-eid="25378" data-crc="534a2ed81e70ed321fc7fdfe587518c5" class="booking-checkbox" >
+                                    7:30pm - 8:00pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s25378_1667610000">
+                                    <input type="checkbox" name="times[]" id="s25378_1667610000" value="1" data-start="2022-11-04 20:00" data-end="2022-11-04 20:30" data-eid="25378" data-crc="cadad61918445e3ed6dd0e156c5b111e" class="booking-checkbox" >
+                                    8:00pm - 8:30pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s25378_1667611800">
+                                    <input type="checkbox" name="times[]" id="s25378_1667611800" value="1" data-start="2022-11-04 20:30" data-end="2022-11-04 21:00" data-eid="25378" data-crc="c700a64af33ab1e7fe27eda620df19b0" class="booking-checkbox" >
+                                    8:30pm - 9:00pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s25378_1667613600">
+                                    <input type="checkbox" name="times[]" id="s25378_1667613600" value="1" data-start="2022-11-04 21:00" data-end="2022-11-04 21:30" data-eid="25378" data-crc="fc4081eb3aaedb097478ed14a8bd9210" class="booking-checkbox" >
+                                    9:00pm - 9:30pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                            </div>
+                </div>
+
+                            
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        106H
+
+                                                    <a data-toggle="modal" data-target="#item-26810"><i class="fa fa-info-circle s-lc-eqw-info"></i></a>
+                        
+                                                    <span class="pull-right s-lc-eqw-rcap">Capacity 7</span>
+                                            </div>
+
+                                            <div class="modal fade s-lc-eqw-modal" id="item-26810" tabindex="-1" role="dialog" aria-labelledby="item-26810-label" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title" id="item-26810-label">106H</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Room&nbsp;includes a PC&nbsp;connected to a large display</p>
+
+<p>Visit the Service Desk for cables to connect personal laptops to TV screen</p>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                    <div class="panel-body" id="slots-26810">
+                                                    <div class="checkbox">
+                                <label for="s26810_1667568600">
+                                    <input type="checkbox" name="times[]" id="s26810_1667568600" value="1" data-start="2022-11-04 08:30" data-end="2022-11-04 09:00" data-eid="26810" data-crc="ed48831304d2193c41adde77e5e88b16" class="booking-checkbox" >
+                                    8:30am - 9:00am, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26810_1667570400">
+                                    <input type="checkbox" name="times[]" id="s26810_1667570400" value="1" data-start="2022-11-04 09:00" data-end="2022-11-04 09:30" data-eid="26810" data-crc="a41a0be691ce4bb9c39c9ab46f65b578" class="booking-checkbox" >
+                                    9:00am - 9:30am, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26810_1667572200">
+                                    <input type="checkbox" name="times[]" id="s26810_1667572200" value="1" data-start="2022-11-04 09:30" data-end="2022-11-04 10:00" data-eid="26810" data-crc="8f0e589a526cb4ba14f257c28bee48f2" class="booking-checkbox" >
+                                    9:30am - 10:00am, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26810_1667574000">
+                                    <input type="checkbox" name="times[]" id="s26810_1667574000" value="1" data-start="2022-11-04 10:00" data-end="2022-11-04 10:30" data-eid="26810" data-crc="3593e16037cf43340778bf80e1116797" class="booking-checkbox" >
+                                    10:00am - 10:30am, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26810_1667575800">
+                                    <input type="checkbox" name="times[]" id="s26810_1667575800" value="1" data-start="2022-11-04 10:30" data-end="2022-11-04 11:00" data-eid="26810" data-crc="63cf59f895c0a6e84263c463b2df00d2" class="booking-checkbox" >
+                                    10:30am - 11:00am, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26810_1667577600">
+                                    <input type="checkbox" name="times[]" id="s26810_1667577600" value="1" data-start="2022-11-04 11:00" data-end="2022-11-04 11:30" data-eid="26810" data-crc="9126496e6fa6e91e320acb04006733b7" class="booking-checkbox" >
+                                    11:00am - 11:30am, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26810_1667608200">
+                                    <input type="checkbox" name="times[]" id="s26810_1667608200" value="1" data-start="2022-11-04 19:30" data-end="2022-11-04 20:00" data-eid="26810" data-crc="3e19cf64e99c9f4ee85264428925a234" class="booking-checkbox" >
+                                    7:30pm - 8:00pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26810_1667610000">
+                                    <input type="checkbox" name="times[]" id="s26810_1667610000" value="1" data-start="2022-11-04 20:00" data-end="2022-11-04 20:30" data-eid="26810" data-crc="5feb35a53751eacb5de06cd69d6391a2" class="booking-checkbox" >
+                                    8:00pm - 8:30pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26810_1667611800">
+                                    <input type="checkbox" name="times[]" id="s26810_1667611800" value="1" data-start="2022-11-04 20:30" data-end="2022-11-04 21:00" data-eid="26810" data-crc="2266141cea50bd070fc6f67866ee9524" class="booking-checkbox" >
+                                    8:30pm - 9:00pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26810_1667613600">
+                                    <input type="checkbox" name="times[]" id="s26810_1667613600" value="1" data-start="2022-11-04 21:00" data-end="2022-11-04 21:30" data-eid="26810" data-crc="f47da969f581dfa607ed48873b35faed" class="booking-checkbox" >
+                                    9:00pm - 9:30pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                            </div>
+                </div>
+
+                            
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        106J
+
+                                                    <a data-toggle="modal" data-target="#item-26811"><i class="fa fa-info-circle s-lc-eqw-info"></i></a>
+                        
+                                                    <span class="pull-right s-lc-eqw-rcap">Capacity 7</span>
+                                            </div>
+
+                                            <div class="modal fade s-lc-eqw-modal" id="item-26811" tabindex="-1" role="dialog" aria-labelledby="item-26811-label" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title" id="item-26811-label">106J</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Room&nbsp;includes a PC&nbsp;connected to a large display</p>
+
+<p>Visit the Service Desk for cables to connect personal laptops to TV screen</p>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                    <div class="panel-body" id="slots-26811">
+                                                    <div class="checkbox">
+                                <label for="s26811_1667568600">
+                                    <input type="checkbox" name="times[]" id="s26811_1667568600" value="1" data-start="2022-11-04 08:30" data-end="2022-11-04 09:00" data-eid="26811" data-crc="63cc15d7ee1ab9ee52b0b9b2f9107583" class="booking-checkbox" >
+                                    8:30am - 9:00am, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26811_1667570400">
+                                    <input type="checkbox" name="times[]" id="s26811_1667570400" value="1" data-start="2022-11-04 09:00" data-end="2022-11-04 09:30" data-eid="26811" data-crc="3d41e74450211d8b9fa4978a9f2a83b0" class="booking-checkbox" >
+                                    9:00am - 9:30am, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26811_1667572200">
+                                    <input type="checkbox" name="times[]" id="s26811_1667572200" value="1" data-start="2022-11-04 09:30" data-end="2022-11-04 10:00" data-eid="26811" data-crc="efce45899b848bbf1da67c3018a07ab6" class="booking-checkbox" >
+                                    9:30am - 10:00am, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26811_1667574000">
+                                    <input type="checkbox" name="times[]" id="s26811_1667574000" value="1" data-start="2022-11-04 10:00" data-end="2022-11-04 10:30" data-eid="26811" data-crc="f812cca43ac571425d4b06bc622d9ae9" class="booking-checkbox" >
+                                    10:00am - 10:30am, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26811_1667575800">
+                                    <input type="checkbox" name="times[]" id="s26811_1667575800" value="1" data-start="2022-11-04 10:30" data-end="2022-11-04 11:00" data-eid="26811" data-crc="05f67aba734f5ed97561b13cf0e6f184" class="booking-checkbox" >
+                                    10:30am - 11:00am, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26811_1667577600">
+                                    <input type="checkbox" name="times[]" id="s26811_1667577600" value="1" data-start="2022-11-04 11:00" data-end="2022-11-04 11:30" data-eid="26811" data-crc="7a9ed1ba6ffdf93e6e53a341a5dd8ab1" class="booking-checkbox" >
+                                    11:00am - 11:30am, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26811_1667579400">
+                                    <input type="checkbox" name="times[]" id="s26811_1667579400" value="1" data-start="2022-11-04 11:30" data-end="2022-11-04 12:00" data-eid="26811" data-crc="d0c2d82af7044b568dced7d847a29c0b" class="booking-checkbox" >
+                                    11:30am - 12:00pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26811_1667581200">
+                                    <input type="checkbox" name="times[]" id="s26811_1667581200" value="1" data-start="2022-11-04 12:00" data-end="2022-11-04 12:30" data-eid="26811" data-crc="233e90ea38f56d63988dacafca4e5b13" class="booking-checkbox" >
+                                    12:00pm - 12:30pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26811_1667583000">
+                                    <input type="checkbox" name="times[]" id="s26811_1667583000" value="1" data-start="2022-11-04 12:30" data-end="2022-11-04 13:00" data-eid="26811" data-crc="4d00ae8e2f395ce69fc7275632de14b5" class="booking-checkbox" >
+                                    12:30pm - 1:00pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26811_1667584800">
+                                    <input type="checkbox" name="times[]" id="s26811_1667584800" value="1" data-start="2022-11-04 13:00" data-end="2022-11-04 13:30" data-eid="26811" data-crc="a0a5dfbc214fd0fba0fe15432d99ef39" class="booking-checkbox" >
+                                    1:00pm - 1:30pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26811_1667586600">
+                                    <input type="checkbox" name="times[]" id="s26811_1667586600" value="1" data-start="2022-11-04 13:30" data-end="2022-11-04 14:00" data-eid="26811" data-crc="bfc6a0d6b28c3a1f6d2b2bb973a91553" class="booking-checkbox" >
+                                    1:30pm - 2:00pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26811_1667588400">
+                                    <input type="checkbox" name="times[]" id="s26811_1667588400" value="1" data-start="2022-11-04 14:00" data-end="2022-11-04 14:30" data-eid="26811" data-crc="87063736c18229929a494619997a4ff0" class="booking-checkbox" >
+                                    2:00pm - 2:30pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26811_1667590200">
+                                    <input type="checkbox" name="times[]" id="s26811_1667590200" value="1" data-start="2022-11-04 14:30" data-end="2022-11-04 15:00" data-eid="26811" data-crc="1b37c5efc5666c9a7318fa177d1a1147" class="booking-checkbox" >
+                                    2:30pm - 3:00pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26811_1667592000">
+                                    <input type="checkbox" name="times[]" id="s26811_1667592000" value="1" data-start="2022-11-04 15:00" data-end="2022-11-04 15:30" data-eid="26811" data-crc="df8b6cef237c1930580ac2a0c57bf1cc" class="booking-checkbox" >
+                                    3:00pm - 3:30pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26811_1667593800">
+                                    <input type="checkbox" name="times[]" id="s26811_1667593800" value="1" data-start="2022-11-04 15:30" data-end="2022-11-04 16:00" data-eid="26811" data-crc="e0302bcc85419fb10e8f9909123387bf" class="booking-checkbox" >
+                                    3:30pm - 4:00pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26811_1667595600">
+                                    <input type="checkbox" name="times[]" id="s26811_1667595600" value="1" data-start="2022-11-04 16:00" data-end="2022-11-04 16:30" data-eid="26811" data-crc="a43dba82c3b32291e744114dc728f0a1" class="booking-checkbox" >
+                                    4:00pm - 4:30pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26811_1667597400">
+                                    <input type="checkbox" name="times[]" id="s26811_1667597400" value="1" data-start="2022-11-04 16:30" data-end="2022-11-04 17:00" data-eid="26811" data-crc="0e7d2183c353ad0fe0cadec9c0e0c9a8" class="booking-checkbox" >
+                                    4:30pm - 5:00pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26811_1667599200">
+                                    <input type="checkbox" name="times[]" id="s26811_1667599200" value="1" data-start="2022-11-04 17:00" data-end="2022-11-04 17:30" data-eid="26811" data-crc="2a2744cfe93ef25abe76f3fcd5219c32" class="booking-checkbox" >
+                                    5:00pm - 5:30pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26811_1667601000">
+                                    <input type="checkbox" name="times[]" id="s26811_1667601000" value="1" data-start="2022-11-04 17:30" data-end="2022-11-04 18:00" data-eid="26811" data-crc="1f9ca06c41ef2d3ce9a7c44aa943513c" class="booking-checkbox" >
+                                    5:30pm - 6:00pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26811_1667602800">
+                                    <input type="checkbox" name="times[]" id="s26811_1667602800" value="1" data-start="2022-11-04 18:00" data-end="2022-11-04 18:30" data-eid="26811" data-crc="b60674fe5aab3c92e31e7abbcaa5e0a9" class="booking-checkbox" >
+                                    6:00pm - 6:30pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26811_1667604600">
+                                    <input type="checkbox" name="times[]" id="s26811_1667604600" value="1" data-start="2022-11-04 18:30" data-end="2022-11-04 19:00" data-eid="26811" data-crc="e936f50ad0772ed9a4a4f5728b9d97ea" class="booking-checkbox" >
+                                    6:30pm - 7:00pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26811_1667606400">
+                                    <input type="checkbox" name="times[]" id="s26811_1667606400" value="1" data-start="2022-11-04 19:00" data-end="2022-11-04 19:30" data-eid="26811" data-crc="009870ff57de4c5892f869ec12c1dd15" class="booking-checkbox" >
+                                    7:00pm - 7:30pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26811_1667608200">
+                                    <input type="checkbox" name="times[]" id="s26811_1667608200" value="1" data-start="2022-11-04 19:30" data-end="2022-11-04 20:00" data-eid="26811" data-crc="23cf1413002cc9e84e83a80ac3d55a81" class="booking-checkbox" >
+                                    7:30pm - 8:00pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26811_1667610000">
+                                    <input type="checkbox" name="times[]" id="s26811_1667610000" value="1" data-start="2022-11-04 20:00" data-end="2022-11-04 20:30" data-eid="26811" data-crc="a04c40dc5d5696cd1e85380313537cd3" class="booking-checkbox" >
+                                    8:00pm - 8:30pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26811_1667611800">
+                                    <input type="checkbox" name="times[]" id="s26811_1667611800" value="1" data-start="2022-11-04 20:30" data-end="2022-11-04 21:00" data-eid="26811" data-crc="d353f6aff32743ed91c3730647833a2e" class="booking-checkbox" >
+                                    8:30pm - 9:00pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26811_1667613600">
+                                    <input type="checkbox" name="times[]" id="s26811_1667613600" value="1" data-start="2022-11-04 21:00" data-end="2022-11-04 21:30" data-eid="26811" data-crc="6aaad40cc8ab7a5f090f6e03af4fc2ed" class="booking-checkbox" >
+                                    9:00pm - 9:30pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                            </div>
+                </div>
+
+                            
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        106K
+
+                                                    <a data-toggle="modal" data-target="#item-26812"><i class="fa fa-info-circle s-lc-eqw-info"></i></a>
+                        
+                                                    <span class="pull-right s-lc-eqw-rcap">Capacity 7</span>
+                                            </div>
+
+                                            <div class="modal fade s-lc-eqw-modal" id="item-26812" tabindex="-1" role="dialog" aria-labelledby="item-26812-label" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title" id="item-26812-label">106K</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Room&nbsp;includes a PC&nbsp;connected to a large display</p>
+
+<p>Visit the Service Desk for cables to connect personal laptops to TV screen</p>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                    <div class="panel-body" id="slots-26812">
+                                                    <div class="checkbox">
+                                <label for="s26812_1667568600">
+                                    <input type="checkbox" name="times[]" id="s26812_1667568600" value="1" data-start="2022-11-04 08:30" data-end="2022-11-04 09:00" data-eid="26812" data-crc="1b86f0f372ca259a4e632b0d3195e42d" class="booking-checkbox" >
+                                    8:30am - 9:00am, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26812_1667570400">
+                                    <input type="checkbox" name="times[]" id="s26812_1667570400" value="1" data-start="2022-11-04 09:00" data-end="2022-11-04 09:30" data-eid="26812" data-crc="6d73cb8b5268953af4458b0e2d8312c2" class="booking-checkbox" >
+                                    9:00am - 9:30am, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26812_1667572200">
+                                    <input type="checkbox" name="times[]" id="s26812_1667572200" value="1" data-start="2022-11-04 09:30" data-end="2022-11-04 10:00" data-eid="26812" data-crc="b925505d594ac05145b1c8496e3dc0f9" class="booking-checkbox" >
+                                    9:30am - 10:00am, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26812_1667574000">
+                                    <input type="checkbox" name="times[]" id="s26812_1667574000" value="1" data-start="2022-11-04 10:00" data-end="2022-11-04 10:30" data-eid="26812" data-crc="72776b5875b21bdc7d167f9d2cee2791" class="booking-checkbox" >
+                                    10:00am - 10:30am, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26812_1667575800">
+                                    <input type="checkbox" name="times[]" id="s26812_1667575800" value="1" data-start="2022-11-04 10:30" data-end="2022-11-04 11:00" data-eid="26812" data-crc="b35c3c56ed5edbfdcd814563f051c7b8" class="booking-checkbox" >
+                                    10:30am - 11:00am, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26812_1667577600">
+                                    <input type="checkbox" name="times[]" id="s26812_1667577600" value="1" data-start="2022-11-04 11:00" data-end="2022-11-04 11:30" data-eid="26812" data-crc="b1c7e0a418d1182ae3e1cd2c6d04384f" class="booking-checkbox" >
+                                    11:00am - 11:30am, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26812_1667579400">
+                                    <input type="checkbox" name="times[]" id="s26812_1667579400" value="1" data-start="2022-11-04 11:30" data-end="2022-11-04 12:00" data-eid="26812" data-crc="d2fff0bfd3cc9c5fee6ef158f71f4576" class="booking-checkbox" >
+                                    11:30am - 12:00pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26812_1667581200">
+                                    <input type="checkbox" name="times[]" id="s26812_1667581200" value="1" data-start="2022-11-04 12:00" data-end="2022-11-04 12:30" data-eid="26812" data-crc="6a14295f919fd96754bf0e1a0a9c8ea2" class="booking-checkbox" >
+                                    12:00pm - 12:30pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26812_1667583000">
+                                    <input type="checkbox" name="times[]" id="s26812_1667583000" value="1" data-start="2022-11-04 12:30" data-end="2022-11-04 13:00" data-eid="26812" data-crc="51510a78a29108d341690bc3d7980043" class="booking-checkbox" >
+                                    12:30pm - 1:00pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26812_1667584800">
+                                    <input type="checkbox" name="times[]" id="s26812_1667584800" value="1" data-start="2022-11-04 13:00" data-end="2022-11-04 13:30" data-eid="26812" data-crc="36cae80181f871fca7e403cb2080c29b" class="booking-checkbox" >
+                                    1:00pm - 1:30pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26812_1667586600">
+                                    <input type="checkbox" name="times[]" id="s26812_1667586600" value="1" data-start="2022-11-04 13:30" data-end="2022-11-04 14:00" data-eid="26812" data-crc="3c3db13491e7dd2d3e2ea33dfa10c2a0" class="booking-checkbox" >
+                                    1:30pm - 2:00pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26812_1667588400">
+                                    <input type="checkbox" name="times[]" id="s26812_1667588400" value="1" data-start="2022-11-04 14:00" data-end="2022-11-04 14:30" data-eid="26812" data-crc="b72900f06297ef9902e7abaf3551318f" class="booking-checkbox" >
+                                    2:00pm - 2:30pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26812_1667590200">
+                                    <input type="checkbox" name="times[]" id="s26812_1667590200" value="1" data-start="2022-11-04 14:30" data-end="2022-11-04 15:00" data-eid="26812" data-crc="b26203ded40e01748b28207c569b1cb7" class="booking-checkbox" >
+                                    2:30pm - 3:00pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26812_1667592000">
+                                    <input type="checkbox" name="times[]" id="s26812_1667592000" value="1" data-start="2022-11-04 15:00" data-end="2022-11-04 15:30" data-eid="26812" data-crc="d66cd3e39c11fd038a4523525fbc72f4" class="booking-checkbox" >
+                                    3:00pm - 3:30pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26812_1667593800">
+                                    <input type="checkbox" name="times[]" id="s26812_1667593800" value="1" data-start="2022-11-04 15:30" data-end="2022-11-04 16:00" data-eid="26812" data-crc="c06211a08382ef4c1c92caabc7ac30fb" class="booking-checkbox" >
+                                    3:30pm - 4:00pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26812_1667595600">
+                                    <input type="checkbox" name="times[]" id="s26812_1667595600" value="1" data-start="2022-11-04 16:00" data-end="2022-11-04 16:30" data-eid="26812" data-crc="31149b92b17952da2104fe3840da93dd" class="booking-checkbox" >
+                                    4:00pm - 4:30pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26812_1667597400">
+                                    <input type="checkbox" name="times[]" id="s26812_1667597400" value="1" data-start="2022-11-04 16:30" data-end="2022-11-04 17:00" data-eid="26812" data-crc="ef5cf39b5eaa115fe67451181d5b9c5c" class="booking-checkbox" >
+                                    4:30pm - 5:00pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26812_1667599200">
+                                    <input type="checkbox" name="times[]" id="s26812_1667599200" value="1" data-start="2022-11-04 17:00" data-end="2022-11-04 17:30" data-eid="26812" data-crc="d7b5d381e1f7a78c1ee04870869d28dd" class="booking-checkbox" >
+                                    5:00pm - 5:30pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26812_1667601000">
+                                    <input type="checkbox" name="times[]" id="s26812_1667601000" value="1" data-start="2022-11-04 17:30" data-end="2022-11-04 18:00" data-eid="26812" data-crc="c46e572398fe0cbc0f566fab088f1ab8" class="booking-checkbox" >
+                                    5:30pm - 6:00pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26812_1667602800">
+                                    <input type="checkbox" name="times[]" id="s26812_1667602800" value="1" data-start="2022-11-04 18:00" data-end="2022-11-04 18:30" data-eid="26812" data-crc="01069f5098226be74df2f68c38bc9187" class="booking-checkbox" >
+                                    6:00pm - 6:30pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26812_1667604600">
+                                    <input type="checkbox" name="times[]" id="s26812_1667604600" value="1" data-start="2022-11-04 18:30" data-end="2022-11-04 19:00" data-eid="26812" data-crc="12a7ee87b755b58d92299240a3645b7c" class="booking-checkbox" >
+                                    6:30pm - 7:00pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26812_1667606400">
+                                    <input type="checkbox" name="times[]" id="s26812_1667606400" value="1" data-start="2022-11-04 19:00" data-end="2022-11-04 19:30" data-eid="26812" data-crc="476d8c581dca82ebd1d54def7a557217" class="booking-checkbox" >
+                                    7:00pm - 7:30pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26812_1667608200">
+                                    <input type="checkbox" name="times[]" id="s26812_1667608200" value="1" data-start="2022-11-04 19:30" data-end="2022-11-04 20:00" data-eid="26812" data-crc="8c2728389c453085a5388d51b707b2fb" class="booking-checkbox" >
+                                    7:30pm - 8:00pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26812_1667610000">
+                                    <input type="checkbox" name="times[]" id="s26812_1667610000" value="1" data-start="2022-11-04 20:00" data-end="2022-11-04 20:30" data-eid="26812" data-crc="cb8626e749d16cd2cfae681022457ddf" class="booking-checkbox" >
+                                    8:00pm - 8:30pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26812_1667611800">
+                                    <input type="checkbox" name="times[]" id="s26812_1667611800" value="1" data-start="2022-11-04 20:30" data-end="2022-11-04 21:00" data-eid="26812" data-crc="0d0f072a9db0f06c62266f58ceb55159" class="booking-checkbox" >
+                                    8:30pm - 9:00pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26812_1667613600">
+                                    <input type="checkbox" name="times[]" id="s26812_1667613600" value="1" data-start="2022-11-04 21:00" data-end="2022-11-04 21:30" data-eid="26812" data-crc="3af7c3b39d6fe036a74edd57886d71fd" class="booking-checkbox" >
+                                    9:00pm - 9:30pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                            </div>
+                </div>
+
+                            
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        221E
+
+                                                    <a data-toggle="modal" data-target="#item-26813"><i class="fa fa-info-circle s-lc-eqw-info"></i></a>
+                        
+                                                    <span class="pull-right s-lc-eqw-rcap">Capacity 7</span>
+                                            </div>
+
+                                            <div class="modal fade s-lc-eqw-modal" id="item-26813" tabindex="-1" role="dialog" aria-labelledby="item-26813-label" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title" id="item-26813-label">221E</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Room&nbsp;includes a PC&nbsp;connected to a large display</p>
+
+<p>Visit the Service Desk for cables to connect personal laptops to TV screen</p>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                    <div class="panel-body" id="slots-26813">
+                                                    <div class="checkbox">
+                                <label for="s26813_1667568600">
+                                    <input type="checkbox" name="times[]" id="s26813_1667568600" value="1" data-start="2022-11-04 08:30" data-end="2022-11-04 09:00" data-eid="26813" data-crc="dea5bf2be5de7e9d96b87927651de282" class="booking-checkbox" >
+                                    8:30am - 9:00am, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26813_1667570400">
+                                    <input type="checkbox" name="times[]" id="s26813_1667570400" value="1" data-start="2022-11-04 09:00" data-end="2022-11-04 09:30" data-eid="26813" data-crc="5ff54d124367d8d3b732c786c21240e6" class="booking-checkbox" >
+                                    9:00am - 9:30am, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26813_1667572200">
+                                    <input type="checkbox" name="times[]" id="s26813_1667572200" value="1" data-start="2022-11-04 09:30" data-end="2022-11-04 10:00" data-eid="26813" data-crc="aebe1833a226e4ed07366bd704e752ab" class="booking-checkbox" >
+                                    9:30am - 10:00am, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26813_1667574000">
+                                    <input type="checkbox" name="times[]" id="s26813_1667574000" value="1" data-start="2022-11-04 10:00" data-end="2022-11-04 10:30" data-eid="26813" data-crc="54d1c0b2d7020919dae74293afe1f1c9" class="booking-checkbox" >
+                                    10:00am - 10:30am, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26813_1667575800">
+                                    <input type="checkbox" name="times[]" id="s26813_1667575800" value="1" data-start="2022-11-04 10:30" data-end="2022-11-04 11:00" data-eid="26813" data-crc="5f305146b7396fd2ea6a50430fa4bfef" class="booking-checkbox" >
+                                    10:30am - 11:00am, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26813_1667577600">
+                                    <input type="checkbox" name="times[]" id="s26813_1667577600" value="1" data-start="2022-11-04 11:00" data-end="2022-11-04 11:30" data-eid="26813" data-crc="387763b1313eb69fe5ec9462febbbc3f" class="booking-checkbox" >
+                                    11:00am - 11:30am, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26813_1667579400">
+                                    <input type="checkbox" name="times[]" id="s26813_1667579400" value="1" data-start="2022-11-04 11:30" data-end="2022-11-04 12:00" data-eid="26813" data-crc="55d7fe690fb61310ae3d867ab1468382" class="booking-checkbox" >
+                                    11:30am - 12:00pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26813_1667581200">
+                                    <input type="checkbox" name="times[]" id="s26813_1667581200" value="1" data-start="2022-11-04 12:00" data-end="2022-11-04 12:30" data-eid="26813" data-crc="3bc7b34a275a74322ba77844d41e73fc" class="booking-checkbox" >
+                                    12:00pm - 12:30pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26813_1667583000">
+                                    <input type="checkbox" name="times[]" id="s26813_1667583000" value="1" data-start="2022-11-04 12:30" data-end="2022-11-04 13:00" data-eid="26813" data-crc="0a6be77ac476c3c6f2b9722d88945ad8" class="booking-checkbox" >
+                                    12:30pm - 1:00pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26813_1667584800">
+                                    <input type="checkbox" name="times[]" id="s26813_1667584800" value="1" data-start="2022-11-04 13:00" data-end="2022-11-04 13:30" data-eid="26813" data-crc="223e86bd82906a75c684e5cba1cd78a0" class="booking-checkbox" >
+                                    1:00pm - 1:30pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26813_1667586600">
+                                    <input type="checkbox" name="times[]" id="s26813_1667586600" value="1" data-start="2022-11-04 13:30" data-end="2022-11-04 14:00" data-eid="26813" data-crc="1beae4cc613c376511a7be60e8d79dc3" class="booking-checkbox" >
+                                    1:30pm - 2:00pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26813_1667588400">
+                                    <input type="checkbox" name="times[]" id="s26813_1667588400" value="1" data-start="2022-11-04 14:00" data-end="2022-11-04 14:30" data-eid="26813" data-crc="da96876072e8ea94da77a4327e2a4220" class="booking-checkbox" >
+                                    2:00pm - 2:30pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26813_1667590200">
+                                    <input type="checkbox" name="times[]" id="s26813_1667590200" value="1" data-start="2022-11-04 14:30" data-end="2022-11-04 15:00" data-eid="26813" data-crc="12a361f2214d5b4d396fec3f017b14e3" class="booking-checkbox" >
+                                    2:30pm - 3:00pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26813_1667592000">
+                                    <input type="checkbox" name="times[]" id="s26813_1667592000" value="1" data-start="2022-11-04 15:00" data-end="2022-11-04 15:30" data-eid="26813" data-crc="772f31b1448c399972c0ddddd2a5cae5" class="booking-checkbox" >
+                                    3:00pm - 3:30pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26813_1667611800">
+                                    <input type="checkbox" name="times[]" id="s26813_1667611800" value="1" data-start="2022-11-04 20:30" data-end="2022-11-04 21:00" data-eid="26813" data-crc="2389d12cbd67aed951a096e720865936" class="booking-checkbox" >
+                                    8:30pm - 9:00pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26813_1667613600">
+                                    <input type="checkbox" name="times[]" id="s26813_1667613600" value="1" data-start="2022-11-04 21:00" data-end="2022-11-04 21:30" data-eid="26813" data-crc="22ab35df85d0e93904ad4a6d55a0f51f" class="booking-checkbox" >
+                                    9:00pm - 9:30pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                            </div>
+                </div>
+
+                            
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        221G
+
+                                                    <a data-toggle="modal" data-target="#item-25381"><i class="fa fa-info-circle s-lc-eqw-info"></i></a>
+                        
+                                                    <span class="pull-right s-lc-eqw-rcap">Capacity 11</span>
+                                            </div>
+
+                                            <div class="modal fade s-lc-eqw-modal" id="item-25381" tabindex="-1" role="dialog" aria-labelledby="item-25381-label" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title" id="item-25381-label">221G</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Room&nbsp;includes a PC&nbsp;connected to a large display</p>
+
+<p>Visit the Service Desk for cables to connect personal laptops to TV screen</p>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                    <div class="panel-body" id="slots-25381">
+                                                    <div class="checkbox">
+                                <label for="s25381_1667568600">
+                                    <input type="checkbox" name="times[]" id="s25381_1667568600" value="1" data-start="2022-11-04 08:30" data-end="2022-11-04 09:00" data-eid="25381" data-crc="a235c8d77f13a92b1c3441587196914a" class="booking-checkbox" >
+                                    8:30am - 9:00am, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s25381_1667570400">
+                                    <input type="checkbox" name="times[]" id="s25381_1667570400" value="1" data-start="2022-11-04 09:00" data-end="2022-11-04 09:30" data-eid="25381" data-crc="c671cedecc774241d00e5707fcf36bd0" class="booking-checkbox" >
+                                    9:00am - 9:30am, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s25381_1667572200">
+                                    <input type="checkbox" name="times[]" id="s25381_1667572200" value="1" data-start="2022-11-04 09:30" data-end="2022-11-04 10:00" data-eid="25381" data-crc="bd229884c1bcbd6561ae4ba26f3829a9" class="booking-checkbox" >
+                                    9:30am - 10:00am, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s25381_1667574000">
+                                    <input type="checkbox" name="times[]" id="s25381_1667574000" value="1" data-start="2022-11-04 10:00" data-end="2022-11-04 10:30" data-eid="25381" data-crc="cab01baebf0021abfad18b6766369492" class="booking-checkbox" >
+                                    10:00am - 10:30am, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s25381_1667575800">
+                                    <input type="checkbox" name="times[]" id="s25381_1667575800" value="1" data-start="2022-11-04 10:30" data-end="2022-11-04 11:00" data-eid="25381" data-crc="ab3f23532d5145aa9499ea4fc4fe8c99" class="booking-checkbox" >
+                                    10:30am - 11:00am, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s25381_1667577600">
+                                    <input type="checkbox" name="times[]" id="s25381_1667577600" value="1" data-start="2022-11-04 11:00" data-end="2022-11-04 11:30" data-eid="25381" data-crc="79217583314ebda52c5ee9c4f3476b4d" class="booking-checkbox" >
+                                    11:00am - 11:30am, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s25381_1667592000">
+                                    <input type="checkbox" name="times[]" id="s25381_1667592000" value="1" data-start="2022-11-04 15:00" data-end="2022-11-04 15:30" data-eid="25381" data-crc="1877f78e4d2cf9e3c6baf808fb7bd978" class="booking-checkbox" >
+                                    3:00pm - 3:30pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s25381_1667606400">
+                                    <input type="checkbox" name="times[]" id="s25381_1667606400" value="1" data-start="2022-11-04 19:00" data-end="2022-11-04 19:30" data-eid="25381" data-crc="0e5533272d59bcc8a1ade687f79ee9d2" class="booking-checkbox" >
+                                    7:00pm - 7:30pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s25381_1667608200">
+                                    <input type="checkbox" name="times[]" id="s25381_1667608200" value="1" data-start="2022-11-04 19:30" data-end="2022-11-04 20:00" data-eid="25381" data-crc="2ba935bccaefc4183cd036fc6df4abfd" class="booking-checkbox" >
+                                    7:30pm - 8:00pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s25381_1667610000">
+                                    <input type="checkbox" name="times[]" id="s25381_1667610000" value="1" data-start="2022-11-04 20:00" data-end="2022-11-04 20:30" data-eid="25381" data-crc="dbfb0dff22f0eaab397a167fa584d63a" class="booking-checkbox" >
+                                    8:00pm - 8:30pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s25381_1667611800">
+                                    <input type="checkbox" name="times[]" id="s25381_1667611800" value="1" data-start="2022-11-04 20:30" data-end="2022-11-04 21:00" data-eid="25381" data-crc="4e2ac7fb3c2639ff17c17660b7fec1dd" class="booking-checkbox" >
+                                    8:30pm - 9:00pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s25381_1667613600">
+                                    <input type="checkbox" name="times[]" id="s25381_1667613600" value="1" data-start="2022-11-04 21:00" data-end="2022-11-04 21:30" data-eid="25381" data-crc="f2d738cab261dfecb4de19e73f46287f" class="booking-checkbox" >
+                                    9:00pm - 9:30pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                            </div>
+                </div>
+
+                            
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        221H
+
+                                                    <a data-toggle="modal" data-target="#item-25383"><i class="fa fa-info-circle s-lc-eqw-info"></i></a>
+                        
+                                                    <span class="pull-right s-lc-eqw-rcap">Capacity 8</span>
+                                            </div>
+
+                                            <div class="modal fade s-lc-eqw-modal" id="item-25383" tabindex="-1" role="dialog" aria-labelledby="item-25383-label" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title" id="item-25383-label">221H</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Room&nbsp;includes a PC&nbsp;connected to a large display</p>
+
+<p>Visit the Service Desk for cables to connect personal laptops to TV screen</p>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                    <div class="panel-body" id="slots-25383">
+                                                    <div class="checkbox">
+                                <label for="s25383_1667568600">
+                                    <input type="checkbox" name="times[]" id="s25383_1667568600" value="1" data-start="2022-11-04 08:30" data-end="2022-11-04 09:00" data-eid="25383" data-crc="3b44ddd68c335c6c330db0748d5f2d58" class="booking-checkbox" >
+                                    8:30am - 9:00am, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s25383_1667570400">
+                                    <input type="checkbox" name="times[]" id="s25383_1667570400" value="1" data-start="2022-11-04 09:00" data-end="2022-11-04 09:30" data-eid="25383" data-crc="0ad171c3278fe9a1f7b6a7af0c3cae6f" class="booking-checkbox" >
+                                    9:00am - 9:30am, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s25383_1667572200">
+                                    <input type="checkbox" name="times[]" id="s25383_1667572200" value="1" data-start="2022-11-04 09:30" data-end="2022-11-04 10:00" data-eid="25383" data-crc="c913261046e612a26d22ce23328b8180" class="booking-checkbox" >
+                                    9:30am - 10:00am, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s25383_1667574000">
+                                    <input type="checkbox" name="times[]" id="s25383_1667574000" value="1" data-start="2022-11-04 10:00" data-end="2022-11-04 10:30" data-eid="25383" data-crc="8a90fe887e9a229769c94e5b9b2fea0d" class="booking-checkbox" >
+                                    10:00am - 10:30am, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s25383_1667575800">
+                                    <input type="checkbox" name="times[]" id="s25383_1667575800" value="1" data-start="2022-11-04 10:30" data-end="2022-11-04 11:00" data-eid="25383" data-crc="5b27329b07592b6ecd9e83aecbf023f3" class="booking-checkbox" >
+                                    10:30am - 11:00am, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s25383_1667577600">
+                                    <input type="checkbox" name="times[]" id="s25383_1667577600" value="1" data-start="2022-11-04 11:00" data-end="2022-11-04 11:30" data-eid="25383" data-crc="8154f73e622d50f62b75752b8b5ff027" class="booking-checkbox" >
+                                    11:00am - 11:30am, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s25383_1667579400">
+                                    <input type="checkbox" name="times[]" id="s25383_1667579400" value="1" data-start="2022-11-04 11:30" data-end="2022-11-04 12:00" data-eid="25383" data-crc="ffbab6094ae74b945e57e38acabfc8e5" class="booking-checkbox" >
+                                    11:30am - 12:00pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s25383_1667581200">
+                                    <input type="checkbox" name="times[]" id="s25383_1667581200" value="1" data-start="2022-11-04 12:00" data-end="2022-11-04 12:30" data-eid="25383" data-crc="4bb87b65d5eaaeedde0dd8b0b9624379" class="booking-checkbox" >
+                                    12:00pm - 12:30pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s25383_1667583000">
+                                    <input type="checkbox" name="times[]" id="s25383_1667583000" value="1" data-start="2022-11-04 12:30" data-end="2022-11-04 13:00" data-eid="25383" data-crc="3f13d602484eac3aca0f837bae21778b" class="booking-checkbox" >
+                                    12:30pm - 1:00pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s25383_1667584800">
+                                    <input type="checkbox" name="times[]" id="s25383_1667584800" value="1" data-start="2022-11-04 13:00" data-end="2022-11-04 13:30" data-eid="25383" data-crc="c76ec821cd69935c2dc79732c92510e1" class="booking-checkbox" >
+                                    1:00pm - 1:30pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s25383_1667586600">
+                                    <input type="checkbox" name="times[]" id="s25383_1667586600" value="1" data-start="2022-11-04 13:30" data-end="2022-11-04 14:00" data-eid="25383" data-crc="e55212bbdc82bd7df5c25ae251c83aef" class="booking-checkbox" >
+                                    1:30pm - 2:00pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s25383_1667588400">
+                                    <input type="checkbox" name="times[]" id="s25383_1667588400" value="1" data-start="2022-11-04 14:00" data-end="2022-11-04 14:30" data-eid="25383" data-crc="7ccaf60b8460c906760c68dab3343689" class="booking-checkbox" >
+                                    2:00pm - 2:30pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s25383_1667590200">
+                                    <input type="checkbox" name="times[]" id="s25383_1667590200" value="1" data-start="2022-11-04 14:30" data-end="2022-11-04 15:00" data-eid="25383" data-crc="245af4472754988a5044126776b97aa4" class="booking-checkbox" >
+                                    2:30pm - 3:00pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s25383_1667592000">
+                                    <input type="checkbox" name="times[]" id="s25383_1667592000" value="1" data-start="2022-11-04 15:00" data-end="2022-11-04 15:30" data-eid="25383" data-crc="0ac3466fdc245db0ae9d3ee26e0f971e" class="booking-checkbox" >
+                                    3:00pm - 3:30pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s25383_1667593800">
+                                    <input type="checkbox" name="times[]" id="s25383_1667593800" value="1" data-start="2022-11-04 15:30" data-end="2022-11-04 16:00" data-eid="25383" data-crc="45f036b0bb43506bed511e7bdb410635" class="booking-checkbox" >
+                                    3:30pm - 4:00pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s25383_1667595600">
+                                    <input type="checkbox" name="times[]" id="s25383_1667595600" value="1" data-start="2022-11-04 16:00" data-end="2022-11-04 16:30" data-eid="25383" data-crc="d94e8218701118a6fbecd636b249e3f4" class="booking-checkbox" >
+                                    4:00pm - 4:30pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s25383_1667597400">
+                                    <input type="checkbox" name="times[]" id="s25383_1667597400" value="1" data-start="2022-11-04 16:30" data-end="2022-11-04 17:00" data-eid="25383" data-crc="4c7cff72f634ea75bd1878fba61f5d25" class="booking-checkbox" >
+                                    4:30pm - 5:00pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s25383_1667599200">
+                                    <input type="checkbox" name="times[]" id="s25383_1667599200" value="1" data-start="2022-11-04 17:00" data-end="2022-11-04 17:30" data-eid="25383" data-crc="ff45e32681e42292862ed3ed7d580fe3" class="booking-checkbox" >
+                                    5:00pm - 5:30pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s25383_1667601000">
+                                    <input type="checkbox" name="times[]" id="s25383_1667601000" value="1" data-start="2022-11-04 17:30" data-end="2022-11-04 18:00" data-eid="25383" data-crc="5e8ba6ab46b8ac87789566fa2dd1c374" class="booking-checkbox" >
+                                    5:30pm - 6:00pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s25383_1667602800">
+                                    <input type="checkbox" name="times[]" id="s25383_1667602800" value="1" data-start="2022-11-04 18:00" data-end="2022-11-04 18:30" data-eid="25383" data-crc="6a68004e43c23e67ab1e59e8b243bf17" class="booking-checkbox" >
+                                    6:00pm - 6:30pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s25383_1667604600">
+                                    <input type="checkbox" name="times[]" id="s25383_1667604600" value="1" data-start="2022-11-04 18:30" data-end="2022-11-04 19:00" data-eid="25383" data-crc="f067aed14877bdb11a5cc02d58fba25f" class="booking-checkbox" >
+                                    6:30pm - 7:00pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s25383_1667606400">
+                                    <input type="checkbox" name="times[]" id="s25383_1667606400" value="1" data-start="2022-11-04 19:00" data-end="2022-11-04 19:30" data-eid="25383" data-crc="1cc560ea21bc59abbfe63c6197af2fdb" class="booking-checkbox" >
+                                    7:00pm - 7:30pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s25383_1667608200">
+                                    <input type="checkbox" name="times[]" id="s25383_1667608200" value="1" data-start="2022-11-04 19:30" data-end="2022-11-04 20:00" data-eid="25383" data-crc="14d548d8939a9ae19dd66f4f8902a216" class="booking-checkbox" >
+                                    7:30pm - 8:00pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s25383_1667610000">
+                                    <input type="checkbox" name="times[]" id="s25383_1667610000" value="1" data-start="2022-11-04 20:00" data-end="2022-11-04 20:30" data-eid="25383" data-crc="724600453a7d8c2d57a0f2394307094d" class="booking-checkbox" >
+                                    8:00pm - 8:30pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s25383_1667611800">
+                                    <input type="checkbox" name="times[]" id="s25383_1667611800" value="1" data-start="2022-11-04 20:30" data-end="2022-11-04 21:00" data-eid="25383" data-crc="8fe636b84eef13015f9559c5e3c78410" class="booking-checkbox" >
+                                    8:30pm - 9:00pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s25383_1667613600">
+                                    <input type="checkbox" name="times[]" id="s25383_1667613600" value="1" data-start="2022-11-04 21:00" data-end="2022-11-04 21:30" data-eid="25383" data-crc="0daaa08877cfdaee4ced77a82bf78af7" class="booking-checkbox" >
+                                    9:00pm - 9:30pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                            </div>
+                </div>
+
+                            
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        221J
+
+                                                    <a data-toggle="modal" data-target="#item-26827"><i class="fa fa-info-circle s-lc-eqw-info"></i></a>
+                        
+                                                    <span class="pull-right s-lc-eqw-rcap">Capacity 11</span>
+                                            </div>
+
+                                            <div class="modal fade s-lc-eqw-modal" id="item-26827" tabindex="-1" role="dialog" aria-labelledby="item-26827-label" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title" id="item-26827-label">221J</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Room&nbsp;includes a PC&nbsp;connected to a large display</p>
+
+<p>Visit the Service Desk for cables to connect personal laptops to TV screen</p>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                    <div class="panel-body" id="slots-26827">
+                                                    <div class="checkbox">
+                                <label for="s26827_1667568600">
+                                    <input type="checkbox" name="times[]" id="s26827_1667568600" value="1" data-start="2022-11-04 08:30" data-end="2022-11-04 09:00" data-eid="26827" data-crc="f208924ca754e92be7ec2ba8c8d0aa93" class="booking-checkbox" >
+                                    8:30am - 9:00am, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26827_1667570400">
+                                    <input type="checkbox" name="times[]" id="s26827_1667570400" value="1" data-start="2022-11-04 09:00" data-end="2022-11-04 09:30" data-eid="26827" data-crc="fd7698f117c0ffc47d2ed5d4d24052fc" class="booking-checkbox" >
+                                    9:00am - 9:30am, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26827_1667572200">
+                                    <input type="checkbox" name="times[]" id="s26827_1667572200" value="1" data-start="2022-11-04 09:30" data-end="2022-11-04 10:00" data-eid="26827" data-crc="83fc851f30f766ac0c857b2c251ca66c" class="booking-checkbox" >
+                                    9:30am - 10:00am, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26827_1667574000">
+                                    <input type="checkbox" name="times[]" id="s26827_1667574000" value="1" data-start="2022-11-04 10:00" data-end="2022-11-04 10:30" data-eid="26827" data-crc="2791263449bea313326645caf0debb0e" class="booking-checkbox" >
+                                    10:00am - 10:30am, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26827_1667575800">
+                                    <input type="checkbox" name="times[]" id="s26827_1667575800" value="1" data-start="2022-11-04 10:30" data-end="2022-11-04 11:00" data-eid="26827" data-crc="84a749e8c9913797b7be7f82de28da4a" class="booking-checkbox" >
+                                    10:30am - 11:00am, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26827_1667602800">
+                                    <input type="checkbox" name="times[]" id="s26827_1667602800" value="1" data-start="2022-11-04 18:00" data-end="2022-11-04 18:30" data-eid="26827" data-crc="46e0861e60b9eb914154075c4654638a" class="booking-checkbox" >
+                                    6:00pm - 6:30pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26827_1667604600">
+                                    <input type="checkbox" name="times[]" id="s26827_1667604600" value="1" data-start="2022-11-04 18:30" data-end="2022-11-04 19:00" data-eid="26827" data-crc="b976232a38c948756ad9a0046be00665" class="booking-checkbox" >
+                                    6:30pm - 7:00pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26827_1667606400">
+                                    <input type="checkbox" name="times[]" id="s26827_1667606400" value="1" data-start="2022-11-04 19:00" data-end="2022-11-04 19:30" data-eid="26827" data-crc="9de4512762c9a7dd410d4d20370d452e" class="booking-checkbox" >
+                                    7:00pm - 7:30pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26827_1667608200">
+                                    <input type="checkbox" name="times[]" id="s26827_1667608200" value="1" data-start="2022-11-04 19:30" data-end="2022-11-04 20:00" data-eid="26827" data-crc="af0f7851d85f6f57d7b73a628c27737b" class="booking-checkbox" >
+                                    7:30pm - 8:00pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26827_1667610000">
+                                    <input type="checkbox" name="times[]" id="s26827_1667610000" value="1" data-start="2022-11-04 20:00" data-end="2022-11-04 20:30" data-eid="26827" data-crc="d01e2a063d8398f7be18a4c7f68d3021" class="booking-checkbox" >
+                                    8:00pm - 8:30pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26827_1667611800">
+                                    <input type="checkbox" name="times[]" id="s26827_1667611800" value="1" data-start="2022-11-04 20:30" data-end="2022-11-04 21:00" data-eid="26827" data-crc="c63c42bb55e3e02317212ba2a35ef4bd" class="booking-checkbox" >
+                                    8:30pm - 9:00pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26827_1667613600">
+                                    <input type="checkbox" name="times[]" id="s26827_1667613600" value="1" data-start="2022-11-04 21:00" data-end="2022-11-04 21:30" data-eid="26827" data-crc="6d894dc258e77e180db4daf8134b7a5d" class="booking-checkbox" >
+                                    9:00pm - 9:30pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                            </div>
+                </div>
+
+                            
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        221K
+
+                                                    <a data-toggle="modal" data-target="#item-26814"><i class="fa fa-info-circle s-lc-eqw-info"></i></a>
+                        
+                                                    <span class="pull-right s-lc-eqw-rcap">Capacity 7</span>
+                                            </div>
+
+                                            <div class="modal fade s-lc-eqw-modal" id="item-26814" tabindex="-1" role="dialog" aria-labelledby="item-26814-label" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title" id="item-26814-label">221K</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Room&nbsp;includes a PC&nbsp;connected to a large display</p>
+
+<p>Visit the Service Desk for cables to connect personal laptops to TV screen</p>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                    <div class="panel-body" id="slots-26814">
+                                                    <div class="checkbox">
+                                <label for="s26814_1667568600">
+                                    <input type="checkbox" name="times[]" id="s26814_1667568600" value="1" data-start="2022-11-04 08:30" data-end="2022-11-04 09:00" data-eid="26814" data-crc="14a6067ab32be55fd210a591c53e3150" class="booking-checkbox" >
+                                    8:30am - 9:00am, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26814_1667570400">
+                                    <input type="checkbox" name="times[]" id="s26814_1667570400" value="1" data-start="2022-11-04 09:00" data-end="2022-11-04 09:30" data-eid="26814" data-crc="cd23a662caabbf9778d26abda78c0083" class="booking-checkbox" >
+                                    9:00am - 9:30am, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26814_1667572200">
+                                    <input type="checkbox" name="times[]" id="s26814_1667572200" value="1" data-start="2022-11-04 09:30" data-end="2022-11-04 10:00" data-eid="26814" data-crc="8dc33d247e6b456f309309b8ab0de131" class="booking-checkbox" >
+                                    9:30am - 10:00am, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26814_1667592000">
+                                    <input type="checkbox" name="times[]" id="s26814_1667592000" value="1" data-start="2022-11-04 15:00" data-end="2022-11-04 15:30" data-eid="26814" data-crc="6db0d80e3abe0bfb12eb6d4841379b20" class="booking-checkbox" >
+                                    3:00pm - 3:30pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26814_1667593800">
+                                    <input type="checkbox" name="times[]" id="s26814_1667593800" value="1" data-start="2022-11-04 15:30" data-end="2022-11-04 16:00" data-eid="26814" data-crc="e0fe6e8205aedfb061ceb8b37980c976" class="booking-checkbox" >
+                                    3:30pm - 4:00pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26814_1667595600">
+                                    <input type="checkbox" name="times[]" id="s26814_1667595600" value="1" data-start="2022-11-04 16:00" data-end="2022-11-04 16:30" data-eid="26814" data-crc="0c6db9f57db079aa10b0076f8ff26afe" class="booking-checkbox" >
+                                    4:00pm - 4:30pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26814_1667597400">
+                                    <input type="checkbox" name="times[]" id="s26814_1667597400" value="1" data-start="2022-11-04 16:30" data-end="2022-11-04 17:00" data-eid="26814" data-crc="78cb06dede645e37ea48f5f6d3ba341d" class="booking-checkbox" >
+                                    4:30pm - 5:00pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26814_1667599200">
+                                    <input type="checkbox" name="times[]" id="s26814_1667599200" value="1" data-start="2022-11-04 17:00" data-end="2022-11-04 17:30" data-eid="26814" data-crc="d07c0cff457a397ac48d822981bb72ce" class="booking-checkbox" >
+                                    5:00pm - 5:30pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                                    <div class="checkbox">
+                                <label for="s26814_1667601000">
+                                    <input type="checkbox" name="times[]" id="s26814_1667601000" value="1" data-start="2022-11-04 17:30" data-end="2022-11-04 18:00" data-eid="26814" data-crc="32f6401bd639af993f862238470b839a" class="booking-checkbox" >
+                                    5:30pm - 6:00pm, Friday, November 4, 2022
+                                </label>
+                            </div>
+                                            </div>
+                </div>
+
+                        </div>
+
+    <div class="footer">
+        <button id="footer" type="submit" class="btn btn-primary btn-block" disabled="disabled">Submit Times</button>
+    </div>
+</form>
+
+<script>
+    jQuery("#s-lc-eq-tform").on("submit", function(event) {
+        event.preventDefault();
+        return submitTimes();
+    });
+
+    jQuery(".booking-checkbox").on("keydown", function(event) {
+        // enter has keyCode = 13, change it if you want to use another button
+        if (event.keyCode == 13) {
+            jQuery("#s-lc-eq-tform").submit();
+            return false;
+        }
+    });
+</script>
