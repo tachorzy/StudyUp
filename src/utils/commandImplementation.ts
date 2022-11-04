@@ -8,8 +8,6 @@ import { help } from "../command/help";
 import { scheduleRecuringEvent } from "../command/scheduleEvent";
 import { printPage, editPage } from "../command/map";
 
-// const paginationEmbed = require('discordjs-button-pagination');
-
 //discord bot formality or otherwise called event handling
 export default (client: Client): void => {
     const rest = new REST({ version: '10' }).setToken(token);
@@ -67,7 +65,7 @@ export default (client: Client): void => {
                         editPage(interaction, 1)
                     else if(buttonInteraction.customId === 'third-page')
                         editPage(interaction, 2)
-                    
+
                     buttonInteraction.deferUpdate()
                 })
                 break;
