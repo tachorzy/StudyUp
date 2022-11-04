@@ -1,6 +1,6 @@
 import { Client, GatewayIntentBits } from "discord.js";
+import command from "./utils/commandImplementation";
 import mongoose from "mongoose"
-import command from "./commandImplementation";
 import * as dotenv from "dotenv";
 
 dotenv.config();
