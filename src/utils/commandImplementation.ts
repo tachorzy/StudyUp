@@ -24,9 +24,11 @@ export default (client: Client): void => {
         switch(commandName){
             case 'addevent':
                 const event = await createEvent(interaction);
+
+                let endTime = interaction.options.getString('endtime') as string
                 //create an invite link alongside the creation of an event and pass that as a parameter to the createEventEmbed function so that we can add the invite as a link to the Embed.
                 event?.createInviteURL({channel: interaction.channelId}).then(invite => {
-                    createEventEmbed(interaction, event, invite)
+                    createEventEmbed(interaction, new Date(endTime), event, invite)
                 })
                 break;
             case 'ping':
@@ -42,15 +44,19 @@ export default (client: Client): void => {
                 await interaction.reply({embeds: [help()]})
                 break;
             case 'schedule':
-                const eventScheduled: GuildScheduledEvent<GuildScheduledEventStatus> | undefined = await scheduleRecuringEvent(interaction);
-                console.log(eventScheduled)
-                eventScheduled?.createInviteURL({channel: interaction.channelId}).then(invite => {
-                    createEventEmbed(interaction, event, invite)
+                const scheduledEvent: GuildScheduledEvent<GuildScheduledEventStatus> | undefined = await scheduleRecuringEvent(interaction);
+                console.log(scheduledEvent)
+                
+                let scheduledEndTime = interaction.options.getString('endtime') as string
+
+                scheduledEvent?.createInviteURL({channel: interaction.channelId}).then(invite => {
+                    createEventEmbed(interaction, new Date(scheduledEndTime) ,scheduledEvent, invite)
                 })               
                 break;
         }
     });
 
+    
     //When an event is deleted we send a message
     client.on('guildScheduledEventDelete', async event => {
         //new code goes here

@@ -41,19 +41,18 @@ export function createEvent (interaction: ChatInputCommandInteraction) {
 }
 
 //creates the EVENTS embed that is posted to the channel
-export function createEventEmbed(interaction: ChatInputCommandInteraction, event: GuildScheduledEvent | undefined, invite: string){
+export function createEventEmbed(interaction: ChatInputCommandInteraction, endDate: Date, event: GuildScheduledEvent | undefined, invite: string){
     if(event === undefined) return;
 
-    console.log(interaction)
     const eventType = interaction.options.getString('type');
     const room = interaction.options.getString('room');
     const capacity = interaction.options.getString('capacity');
     const details = interaction.options.getString('description');
-    const startTime = ISOToEnglishTime(event.scheduledStartAt) ;
-    const endTime = ISOToEnglishTime(event.scheduledEndAt);
-    const endDate = ISOToEnglishDate(event.scheduledEndAt);
     const host: string = interaction.user.id;
     const thumbnail = 'https://i.imgur.com/XX8tyb3.png'
+    const startTime = ISOToEnglishTime(event.scheduledStartAt) ;
+    const endTime = ISOToEnglishTime(event.scheduledEndAt);
+
 
     //room emote image will change depending on the building you choose. By defualt it's set to a library emote
     let roomEmote = '<:StudyRoom2:1017865348457975838>'
