@@ -1,6 +1,7 @@
 import fetch from 'cross-fetch';
-import fs from 'fs';
+//import fs from 'fs';
 
+// Make an HTTP request with specified headers to UH website
 const classScraper = async () => {
     let data = await fetch("https://uh.libcal.com/widget/equipment/ajax/display", {
             "headers": {
