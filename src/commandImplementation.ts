@@ -3,7 +3,7 @@ import { token, clientId, REST, guildId } from './Bot';
 import { insertEvent, findEvent, delEvent } from "./Database";
 import { commands } from "./slashCommands";
 
-import classScraper from "./commands/classScraper";
+import { parseDates, parseTimes } from "./commands/classParseUtils";
 
 const cronJob = require('node-cron');
 
@@ -49,7 +49,7 @@ export default (client: Client): void => {
                 })               
                 break;
             case 'scrape':
-                classScraper();
+                parseTimes();
                 break;
         }
     });
