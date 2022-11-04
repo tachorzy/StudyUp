@@ -3,7 +3,7 @@ import { token, clientId, REST, guildId } from './Bot';
 import { insertEvent, findEvent, delEvent } from "./Database";
 import { commands } from "./slashCommands";
 
-import { parseDates, parseTimes } from "./commands/classParseUtils";
+import { parseDates, parseRooms, parseTimes } from "./commands/classParseUtils";
 
 const cronJob = require('node-cron');
 

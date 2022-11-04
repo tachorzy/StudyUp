@@ -2,11 +2,14 @@ import { parse } from 'node-html-parser';
 import classScraper from './classScraper';
 
 
+// Room type
 export interface Room {
     name: string,
-    dateTime: Date[][]
+    capacity: number,
+    dateTime?: Date[][]
 }
 
+// Helper functions
 export const parseDates = async () => {
 
     let dates: Date[] = [];
@@ -23,25 +26,47 @@ export const parseDates = async () => {
     console.log(dates);
 
     return dates;
-
 }
 
-export const parseTimes = async () => {
+export const parseRooms = async () => {
 
     // Array of Room arrays, each child array signifies a room with all possible time ranges
-    let times: Date[][] = [];
+    let rooms: Room[] = [];
 
     // Parse all html from classScraper()
     const root = parse(await (await classScraper()).text());
 
+    // Find name and capacity of available rooms and populate rooms array
+    let roomOptions = root.querySelectorAll('.panel-heading');
+    for (let i of roomOptions) {
+        const roomInfo = i.innerText.replace(/(\r\n|\n|\r)/gm, "").trim().split(/\s+/);
+        rooms.push({
+            name: roomInfo[0],
+            capacity: Number(roomInfo[2]),
+        });
+    }
+
+    console.log(rooms);
+
+    return rooms;
+}
+
+export const parseTimes = async () => {
+
+    // Parse all html from classScraper()
+    const root = parse(await (await classScraper()).text());
+
+    let times: Date[][] = [];
+
     // Get all time options, convert into Date arrays, and push into times[]
     let timeOptions = root.getElementsByTagName('label');
-    console.log("Number of bookings available: " + timeOptions.length);
+
     for (let i of timeOptions) {
         // Remove all line breaks and spaces
         let dateTime = i.text.replace(/(\r\n|\n|\r)/gm, "").trim();
         // Split into array for easier Date conversion
         let dateTimeArr = dateTime.split(" ");
+        console.log(dateTime);
         // Create Date array and push into times[]
         times.push(
             [
@@ -62,4 +87,6 @@ export const parseTimes = async () => {
             ]
         );
     }
+
+    console.log(times.length)
 }
