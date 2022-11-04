@@ -5,7 +5,7 @@ import { createEvent, createEventEmbed } from"../command/createEvent";
 import { listEventsEmbed } from "../command/listEvents";
 import { announcement } from "../command/announcement";
 import { help } from "../command/help";
-import { scheduleRecuringEvent } from "../command/scheduleevent";
+import { scheduleRecuringEvent } from "../command/scheduleEvent";
 
 //discord bot formality or otherwise called event handling
 export default (client: Client): void => {
