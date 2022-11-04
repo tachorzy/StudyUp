@@ -94,6 +94,6 @@ import { Client, PermissionFlagsBits, SlashCommandBuilder } from "discord.js";
                 option.setName('message')
                 .setDescription('Have something to share with us?')
                 .setRequired(true)),
-        new SlashCommandBuilder().setName('directions').setDescription('Find your way around the library and straight to your study room')
+        new SlashCommandBuilder().setName('map').setDescription('Find your way around the library and straight to your study room')
         // new SlashCommandBuilder().setName('update').setDescription('Updates a study sesh embed with new info'),
     ]	

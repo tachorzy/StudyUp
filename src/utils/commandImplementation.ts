@@ -6,7 +6,7 @@ import { listEventsEmbed } from "../command/listEvents";
 import { announcement } from "../command/announcement";
 import { help } from "../command/help";
 import { scheduleRecuringEvent } from "../command/scheduleEvent";
-import { printPage, editPage } from "../command/directions";
+import { printPage, editPage } from "../command/map";
 
 // const paginationEmbed = require('discordjs-button-pagination');
 
@@ -56,7 +56,7 @@ export default (client: Client): void => {
                     createEventEmbed(interaction, new Date(scheduledEndTime) ,scheduledEvent, invite)
                 })               
                 break;
-            case 'directions':
+            case 'map':
                 printPage(interaction)
                 client.on("interactionCreate", buttonInteraction => {
                     if(!buttonInteraction.isButton()) return
