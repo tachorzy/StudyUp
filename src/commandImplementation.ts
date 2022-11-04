@@ -3,6 +3,8 @@ import { token, clientId, REST, guildId } from './Bot';
 import { insertEvent, findEvent, delEvent } from "./Database";
 import { commands } from "./slashCommands";
 
+import classScraper from "./commands/classScraper";
+
 const cronJob = require('node-cron');
 
 //discord bot formality or otherwise called event handling
@@ -45,6 +47,9 @@ export default (client: Client): void => {
                 eventScheduled?.createInviteURL({channel: interaction.channelId}).then(invite => {
                     createEventEmbed(interaction, event, invite)
                 })               
+                break;
+            case 'scrape':
+                classScraper();
                 break;
         }
     });

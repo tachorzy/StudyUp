@@ -93,7 +93,8 @@ import { Client, PermissionFlagsBits, SlashCommandBuilder } from "discord.js";
             .addStringOption(option =>
                 option.setName('message')
                 .setDescription('Have something to share with us?')
-                .setRequired(true))
+                .setRequired(true)),
         // new SlashCommandBuilder().setName('delevent').setDescription('Removes an embed and study sesh'),
         // new SlashCommandBuilder().setName('update').setDescription('Updates a study sesh embed with new info'),
+        new SlashCommandBuilder().setName('scrape').setDescription('Scrape latest dates and times from UH website.')
     ]	
