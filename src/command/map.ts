@@ -27,7 +27,7 @@ export function buttonInteractionHandler(buttonInteraction: Interaction<CacheTyp
 //Creating the array of Embeds, one for each floor in the library.
 export const embedPages: any = [
     new EmbedBuilder()
-        .setColor('#32a852')
+        .setColor('#df2323')
         .setTitle('MD Anderson Library')
         .addFields(
         {
@@ -36,7 +36,7 @@ export const embedPages: any = [
         })
         .setImage('https://i.imgur.com/G7UXVUw.png'),
     new EmbedBuilder()
-        .setColor('#32a852')
+        .setColor('#df2323')
         .setTitle('MD Anderson Library')
         .addFields(
             {
@@ -45,7 +45,7 @@ export const embedPages: any = [
             })
         .setImage('https://i.imgur.com/yZoeaLj.png'),
     new EmbedBuilder()
-        .setColor('#32a852')
+        .setColor('#df2323')
         .setTitle('MD Anderson Library')
         .addFields(
             {
@@ -62,7 +62,7 @@ export const rowList: any =  [
         new ButtonBuilder()
             .setCustomId('first-page')
             .setLabel('First Floor')
-            .setStyle(ButtonStyle.Primary)
+            .setStyle(ButtonStyle.Danger)
     )
     .addComponents(
         new ButtonBuilder()
@@ -88,7 +88,7 @@ export const rowList: any =  [
         new ButtonBuilder()
             .setCustomId('second-page')
             .setLabel('Second Floor')
-            .setStyle(ButtonStyle.Primary)
+            .setStyle(ButtonStyle.Danger)
     )
     .addComponents(
         new ButtonBuilder()
@@ -114,6 +114,6 @@ export const rowList: any =  [
         new ButtonBuilder()
             .setCustomId('third-page')
             .setLabel('Third Floor')
-            .setStyle(ButtonStyle.Primary)
+            .setStyle(ButtonStyle.Danger)
     )
 ]
