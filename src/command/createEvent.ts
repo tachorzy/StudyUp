@@ -36,7 +36,10 @@ export function createEvent (interaction: ChatInputCommandInteraction) {
         }
     });
     
-    const eventId = event?.then(onInsertion);
+    const eventId = event?.then(event => {
+        const eventId: string = event.id
+        insertEvent(event.guildId, eventId, event.name, event?.entityMetadata?.location, event.url, event.scheduledStartAt); 
+    });
     return event;
 }
 

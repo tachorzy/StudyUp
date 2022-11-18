@@ -7,6 +7,7 @@ import { announcement } from "../command/announcement";
 import { help } from "../command/help";
 import { scheduleRecuringEvent } from "../command/scheduleEvent";
 import { printPage, buttonInteractionHandler } from "../command/map";
+import { deleteEvent } from "../command/deleteEvent";
 
 //discord bot formality or otherwise called event handling
 export default (client: Client): void => {
@@ -59,6 +60,9 @@ export default (client: Client): void => {
                 client.on("interactionCreate", buttonInteraction => {
                     buttonInteractionHandler(buttonInteraction, interaction);
                 })
+                break;
+            case 'delete':
+                deleteEvent(interaction)
                 break;
         }
     });

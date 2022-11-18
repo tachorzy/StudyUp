@@ -31,5 +31,5 @@ export async function delEvent(guildId: string | null, eventId: string | null){
         return;
     }
     console.log(`deleting eventId: ${eventId}`)
-    return await eventModel.findOneAndDelete({fitler: {guildId: guildId, eventId: eventId}})
+    return await eventModel.deleteOne({eventId: eventId})
 }

@@ -79,10 +79,14 @@ import { Client, PermissionFlagsBits, SlashCommandBuilder } from "discord.js";
                 option.setName('date')
                 .setDescription('when is this event taking place? MM-DD-YY hh:mm e.g. 11-11-2022 04:30 PM')
                 .setRequired(true)),
-        new SlashCommandBuilder().setName('del').setDescription('delete an event')
+        new SlashCommandBuilder().setName('delete').setDescription('delete an event')
             .addStringOption(option =>
-                option.setName('id')
+                option.setName('room')
                 .setDescription('where is this event taking place?')
+                .setRequired(true))
+            .addStringOption(option =>
+                option.setName('starttime')
+                .setDescription('when is the event taking place?')
                 .setRequired(true)),
         new SlashCommandBuilder().setName('help').setDescription('provides help on all available commands'),
         new SlashCommandBuilder().setName('ping').setDescription('Ping everyone in an event and send a message.')
