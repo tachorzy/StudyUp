@@ -9,6 +9,8 @@ export function deleteEvent (interaction: ChatInputCommandInteraction) {
     const startDate: any = interaction.options.getString('starttime');
     const starttime = new Date(startDate)
 
+    //CHECK IF INPUTS ARE IN THE RIGHT FORMAT
+
     //use the Database.ts findevent command to fetch eventId from the database
     let event = findEvent(interaction.guildId, room, starttime.toString())
     event.then(Data => {
@@ -29,5 +31,7 @@ export function deleteEvent (interaction: ChatInputCommandInteraction) {
             delEvent(interaction.guildId, id)
         })
     })
+
+    //CHANGE THIS TO INSTEAD REPLY WITH A RED COLOR EMBED SAYING EVENT CANCELED
     interaction.reply("The Delete was Successful and the event is now deleted!")
 }
