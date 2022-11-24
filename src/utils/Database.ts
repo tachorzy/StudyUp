@@ -27,6 +27,7 @@ export async function findEvent(guildId: string | null, roomQuery: string | null
 }
 
 export async function delEvent(guildId: string | null, eventId: string | null){
+    //require both guildId and eventId to delete from the database (slightly redundant as each eventId is unique)
     if (!guildId || !eventId){
         return;
     }
