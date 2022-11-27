@@ -2,13 +2,6 @@ import { ActionRowBuilder, ButtonBuilder, ButtonStyle, ChatInputCommandInteracti
 import { ISOToEnglishDate, ISOToEnglishTime } from "../utils/isoTimeConverter";
 import { insertEvent } from "../utils/Database";
 
-//whenever we have call guildScheduleEventManager.create() or guildScheduleEventManager.delete() we get a Promise that we
-//attach this callback function to. Once our promise is done waiting we callback here
-function onInsertion(event: GuildScheduledEvent){
-    const eventId: string = event.id
-    insertEvent(event.guildId, eventId, event.name, event?.entityMetadata?.location, event.url, event.scheduledStartAt);    
-}
-
 //AddEvent function creates embed for a new event from information received through a slash command
 export function createEvent (interaction: ChatInputCommandInteraction) {
     //grabbing information from slash commands
@@ -38,7 +31,7 @@ export function createEvent (interaction: ChatInputCommandInteraction) {
     
     const eventId = event?.then(event => {
         const eventId: string = event.id
-        insertEvent(event.guildId, eventId, event.name, event?.entityMetadata?.location, event.url, event.scheduledStartAt); 
+        insertEvent(event.guildId, eventId, event.name, event?.entityMetadata?.location, event.url, event.scheduledStartAt, event.description, new Date(endDate)); 
     });
     return event;
 }
