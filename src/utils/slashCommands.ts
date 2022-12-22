@@ -214,5 +214,5 @@ import { Client, PermissionFlagsBits, SlashCommandBuilder } from "discord.js";
             option.setName('newname')
             .setDescription('what is the updated name for the event?')
             .setRequired(false)), 
-        
+        new SlashCommandBuilder().setName('scrape').setDescription('Scrape latest dates and times from UH website.')
     ]	

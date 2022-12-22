@@ -9,6 +9,7 @@ import { scheduleRecuringEvent } from "../command/scheduleEvent";
 import { printPage, buttonInteractionHandler } from "../command/map";
 import { deleteEvent } from "../command/deleteEvent";
 import { editEvent } from "../command/editEvent";
+import { parseTimes } from "../command/classScraper";
 
 //discord bot formality or otherwise called event handling
 export default (client: Client): void => {
@@ -67,6 +68,9 @@ export default (client: Client): void => {
                 break;
             case 'updatevent':
                 editEvent(interaction)
+                break;
+            case 'scrape':
+                parseTimes();
                 break;
         }
     });
